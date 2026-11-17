@@ -1,5 +1,5 @@
 const issues = [
-  ['2025', 'assets/images/covers/lametta-2025.webp', 'assets/documents/2025_ANZ_Lametta_digital_150dpi_ES_Stern.pdf'],
+  ['2025', 'assets/images/covers/lametta-2025.webp', 'https://lametta-mag.de/lametta-2025'],
   ['2024', 'assets/images/covers/lametta-2024.webp', 'assets/documents/2024_ANZ_Lametta_RZ_digital_150dpi_ES_optimiert_e.pdf'],
   ['2023', 'assets/images/covers/lametta-2023.webp', 'assets/documents/ePaper_Lametta_23_Einzelseiten_korr.pdf'],
   ['2022', 'assets/images/covers/lametta-2022.webp', 'assets/documents/ANZ_Lametta_2911_22_Doppelseiten_medium.pdf'],
@@ -49,6 +49,32 @@ function renderContact() {
     </div>`;
 }
 
+function renderEpaper() {
+  const epaper = document.querySelector('#epaper');
+  if (!epaper) return;
+  epaper.innerHTML = `
+    <div class="epaper-inner">
+      <div class="epaper-cover">
+        <img src="assets/images/covers/lametta-2025.webp" alt="Cover der LAMETTA!-Ausgabe 2025" width="1440" height="1895">
+      </div>
+      <div class="epaper-copy">
+        <div class="eyebrow">Ein Blick in LAMETTA!</div>
+        <h2>Das Magazin<br>zum Blättern.</h2>
+        <p>Entdecken Sie die vollständige Ausgabe 2025 im interaktiven E-Paper – ohne Download und bequem im Browser.</p>
+        <a class="cta" href="https://lametta-mag.de/lametta-2025" target="_blank" rel="noopener">E-Paper 2025 öffnen ↗</a>
+        <p class="epaper-note">Das E-Paper öffnet sich in einem neuen Tab.</p>
+      </div>
+    </div>`;
+}
+
+function upgradeHeroCover() {
+  const cover = document.querySelector('.heroart img');
+  if (!cover) return;
+  cover.src = 'assets/images/covers/lametta-2025.webp';
+  cover.width = 1440;
+  cover.height = 1895;
+}
+
 function cleanPrototypeNotes() {
   document.querySelector('#beispiele .note')?.remove();
   const factNote = document.querySelector('#fakten .note');
@@ -67,6 +93,8 @@ function renderFooter() {
 }
 
 renderArchive();
+renderEpaper();
 renderContact();
 cleanPrototypeNotes();
 renderFooter();
+upgradeHeroCover();
