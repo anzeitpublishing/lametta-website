@@ -1,3 +1,223 @@
+.cover-claim {
+  font-family: 'futura-pt', Arial, sans-serif !important;
+  font-size: clamp(13px, 1.25vw, 17px) !important;
+  font-weight: 400;
+  font-style: normal !important;
+  line-height: 1.45 !important;
+  letter-spacing: .035em;
+  max-width: 390px !important;
+}
+
+.hand-note {
+  font-family: 'homemade-apple', 'the-seasons', Georgia, serif;
+  font-size: clamp(22px, 3vw, 38px);
+  line-height: 1.25;
+}
+
+.placement-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, .8fr);
+  gap: clamp(40px, 8vw, 120px);
+  align-items: end;
+  margin-bottom: 55px;
+}
+
+.placement-intro p:not(.hand-note) {
+  font-size: clamp(18px, 2vw, 24px);
+}
+
+.placement-intro .hand-note {
+  color: var(--red);
+  transform: rotate(-2deg);
+  margin: 28px 0 0;
+}
+
+.placement-collage {
+  display: grid;
+  grid-template-columns: 1.05fr .85fr 1fr;
+  gap: clamp(14px, 2.4vw, 34px);
+  align-items: start;
+}
+
+.placement-card {
+  margin: 0;
+  position: relative;
+}
+
+.placement-card--offset { margin-top: 11vw; }
+.placement-card--wide { margin-top: 3vw; }
+
+.placement-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 14px 18px 0 #34181c14;
+}
+
+.placement-card figcaption {
+  margin: 18px 0 0 8px;
+  font-family: 'futura-pt', Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.product-stage {
+  min-height: 460px;
+  margin: 110px -7vw -90px;
+  padding: 60px 7vw;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: var(--pink);
+}
+
+.product-stage-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+  text-align: center;
+}
+
+.product-stage-copy span,
+.product-stage-copy strong { display: block; }
+
+.product-stage-copy strong {
+  margin-top: 12px;
+  font-family: 'the-seasons', 'minion-pro', Georgia, serif;
+  font-size: clamp(34px, 5vw, 68px);
+  font-weight: 400;
+  line-height: .95;
+}
+
+.product-float {
+  position: absolute;
+  z-index: 1;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 18px #34181c24);
+  animation: product-drift 6s ease-in-out infinite alternate;
+}
+
+.product-float--1 { width: min(18vw, 230px); left: 4%; top: 8%; transform: rotate(-11deg); }
+.product-float--2 { width: min(27vw, 380px); left: 8%; bottom: 4%; animation-delay: -2s; }
+.product-float--3 { width: min(13vw, 160px); right: 10%; top: 5%; transform: rotate(8deg); animation-delay: -1s; }
+.product-float--4 { width: min(9vw, 110px); right: 5%; bottom: 6%; transform: rotate(5deg); animation-delay: -3s; }
+
+@keyframes product-drift {
+  to { translate: 0 -12px; }
+}
+
+.giveaway {
+  display: block !important;
+  padding-inline: 0;
+  overflow: hidden;
+}
+
+.giveaway-heading,
+.giveaway-lead,
+.giveaway-bottom {
+  margin-inline: 7vw;
+}
+
+.giveaway-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: clamp(28px, 6vw, 90px);
+  align-items: end;
+}
+
+.giveaway-stat {
+  padding-top: 16px;
+  border-top: 1px solid #34181c66;
+}
+
+.giveaway-stat strong,
+.giveaway-stat span { display: block; }
+
+.giveaway-stat strong {
+  font-family: 'the-seasons', 'minion-pro', Georgia, serif;
+  font-size: clamp(40px, 6vw, 78px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.giveaway-stat span,
+.prize-card span,
+.prize-brand {
+  font-family: 'futura-pt', Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.giveaway-lead {
+  margin-top: 36px;
+  font-size: clamp(18px, 2vw, 24px);
+}
+
+.prize-window {
+  overflow: hidden;
+  margin: 48px 0 32px;
+  padding: 22px 0 35px;
+}
+
+.prize-track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  animation: prize-scroll 44s linear infinite;
+}
+
+.prize-window:hover .prize-track { animation-play-state: paused; }
+
+.prize-card {
+  width: clamp(210px, 22vw, 300px);
+  min-height: 380px;
+  padding: 22px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 8px 12px 0 #34181c12;
+}
+
+.prize-image {
+  height: 230px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+}
+
+.prize-image img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.prize-card strong {
+  margin: 6px 0 12px;
+  font-family: 'the-seasons', 'minion-pro', Georgia, serif;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.prize-card span { margin-top: auto; }
+
+.giveaway-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+@keyframes prize-scroll {
+  to { transform: translateX(calc(-50% - 9px)); }
+}
+
 .archive-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -131,11 +351,24 @@
 }
 
 @media (max-width: 900px) {
+  .giveaway-heading { grid-template-columns: 1fr 1fr; }
+  .giveaway-heading > :first-child { grid-column: 1 / -1; }
   .archive-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .contact-inner { grid-template-columns: 1fr 1fr; gap: 38px; }
 }
 
 @media (max-width: 720px) {
+  .placement-intro { grid-template-columns: 1fr; }
+  .placement-collage { grid-template-columns: 1fr 1fr; }
+  .placement-card--offset { margin-top: 16vw; }
+  .placement-card--wide { grid-column: 1 / -1; width: 72%; margin: -7vw 0 0 auto; }
+  .product-stage { min-height: 520px; }
+  .product-float--1 { width: 32vw; left: -5%; }
+  .product-float--2 { width: 48vw; left: -8%; }
+  .product-float--3 { width: 25vw; right: 3%; }
+  .product-float--4 { width: 18vw; right: 4%; }
+  .giveaway-heading { grid-template-columns: 1fr 1fr; }
+  .giveaway-bottom { align-items: flex-start; flex-direction: column; }
   .archive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 16px; }
   .epaper-inner { grid-template-columns: 1fr; }
   .epaper-cover { max-width: 420px; }
@@ -149,5 +382,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .product-float,
+  .prize-track { animation: none; }
+  .prize-track { flex-wrap: wrap; width: auto; padding-inline: 7vw; }
+  .prize-track .prize-card:nth-child(n+9) { display: none; }
   .archive-card img { transition: none; }
 }

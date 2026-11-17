@@ -9,6 +9,100 @@ const issues = [
   ['2018', 'assets/images/covers/lametta-2018.webp', 'assets/documents/181204_ANZEIT_Lametta_final_190x250mm_print.pdf']
 ];
 
+const featuredBrands = [
+  'Hama', 'Soundcore', 'Mind Games', 'Diogenes', 'Sonoro', 'Trinny London',
+  'L’Occitane', 'Sage', 'Bosch', 'De’Longhi', 'Sonos', 'Eufy', 'Lechuza',
+  'Playmobil', 'Ravensburger', 'Carrera', 'Feiler', 'Muck Boot'
+];
+
+const prizeHighlights = [
+  ['De’Longhi', 'La Specialista Touch', '850 €', 'assets/images/products/delonghi-la-specialista.png'],
+  ['Eufy', 'Rasenmähroboter E15', '1.500 €', 'assets/images/products/eufy-e15.png'],
+  ['Sonos', 'Beam Gen 2', '500 €', 'assets/images/products/sonos-beam.png'],
+  ['Lechuza', 'CANTO Stone Set', '240 €', 'assets/images/products/lechuza-canto.png'],
+  ['Hama', 'Smartwatch 8900', '150 €', 'assets/images/products/hama-smartwatch-8900.png'],
+  ['Carrera', 'Hybrid Devil Drivers', '300 €', 'assets/images/products/carrera-hybrid-set.png'],
+  ['Playmobil', 'Sky Trails Starter Kit', 'je 80 €', 'assets/images/products/playmobil-sky-trails.png'],
+  ['Muck Boot', 'Arctic Ice Vibram', '270 €', 'assets/images/products/muck-boot-arctic-ice.png']
+];
+
+function renderBrandReferences() {
+  const ticker = document.querySelector('.brandticker');
+  if (!ticker) return;
+  const names = [...featuredBrands, ...featuredBrands]
+    .map((brand) => `<span>${brand}</span>`)
+    .join('');
+  ticker.innerHTML = `
+    <div class="label">Ausgewählte Marken und Produkte in LAMETTA! 2025</div>
+    <div class="brandtrack">${names}</div>`;
+}
+
+function renderPlacements() {
+  const section = document.querySelector('#beispiele');
+  if (!section) return;
+  section.innerHTML = `
+    <div class="placement-intro">
+      <div>
+        <div class="eyebrow">Echte Platzierungen · Ausgabe 2025</div>
+        <h2>Nicht einfach<br>platziert.<br><i>Editorial inszeniert.</i></h2>
+      </div>
+      <div>
+        <p>Produkte stehen bei LAMETTA! nicht in einem austauschbaren Shop-Raster. Sie werden Teil einer redaktionellen Weihnachtswelt – mit eigenem Rhythmus, überraschenden Nachbarschaften und viel Raum für ihre Geschichte.</p>
+        <p class="hand-note">So kann eine Marke im Magazin aussehen.</p>
+      </div>
+    </div>
+    <div class="placement-collage">
+      <figure class="placement-card placement-card--tall">
+        <img src="assets/images/placements/lametta-2025-page-4.webp" alt="Redaktionelle LAMETTA!-Platzierung mit Hama und Soundcore" loading="lazy" width="1400" height="1843">
+        <figcaption>Produkt trifft Persönlichkeit</figcaption>
+      </figure>
+      <figure class="placement-card placement-card--offset">
+        <img src="assets/images/placements/lametta-2025-page-5.webp" alt="LAMETTA!-Produktseite mit Mind Games, Diogenes und Sonoro" loading="lazy" width="1400" height="1843">
+        <figcaption>Luxus, Kultur und Design</figcaption>
+      </figure>
+      <figure class="placement-card placement-card--wide">
+        <img src="assets/images/placements/lametta-2025-page-7.webp" alt="LAMETTA!-Produktseite mit Beauty- und Lifestyle-Produkten" loading="lazy" width="1400" height="1843">
+        <figcaption>Kuratiert statt katalogisiert</figcaption>
+      </figure>
+    </div>
+    <div class="product-stage" aria-label="Ausgewählte Produktfreisteller aus LAMETTA! 2025">
+      <img class="product-float product-float--1" src="assets/images/products/soundcore-aeroclips.png" alt="Soundcore AeroClips" loading="lazy">
+      <img class="product-float product-float--2" src="assets/images/products/sonoro-avaton.png" alt="Sonoro AVATON" loading="lazy">
+      <div class="product-stage-copy"><span class="hand-note">Freigestellt.</span><strong>Und trotzdem mitten in der Geschichte.</strong></div>
+      <img class="product-float product-float--3" src="assets/images/products/hama-smartwatch-8900.png" alt="Hama Smartwatch 8900" loading="lazy">
+      <img class="product-float product-float--4" src="assets/images/products/thoma-serum.png" alt="Thoma Naturkosmetik Serum" loading="lazy">
+    </div>`;
+}
+
+function renderGiveaway() {
+  const section = document.querySelector('#gewinnspiel');
+  if (!section) return;
+  const cards = prizeHighlights.map(([brand, product, value, image]) => `
+    <article class="prize-card">
+      <div class="prize-image"><img src="${image}" alt="${brand} ${product}" loading="lazy"></div>
+      <div class="prize-brand">${brand}</div>
+      <strong>${product}</strong>
+      <span>Wert: ${value}</span>
+    </article>`).join('');
+  section.innerHTML = `
+    <div class="giveaway-heading">
+      <div>
+        <div class="eyebrow">LAMETTA!-Gewinnspiel 2025</div>
+        <h2>Große Freude.<br><i>Große Bühne.</i></h2>
+      </div>
+      <div class="giveaway-stat"><strong>17</strong><span>Gewinnpakete</span></div>
+      <div class="giveaway-stat"><strong>5.900 €+</strong><span>Gesamtwert</span></div>
+    </div>
+    <p class="giveaway-lead">Das Gewinnspiel verlängert die Produktinszenierung über das Magazin hinaus: mit aufmerksamkeitsstarken Preisen, E-Paper, Website, Newsletter und Social Media.</p>
+    <div class="prize-window">
+      <div class="prize-track">${cards}${cards}</div>
+    </div>
+    <div class="giveaway-bottom">
+      <p class="hand-note">Eine Auswahl der Preise aus 2025.</p>
+      <a class="cta" href="#kontakt">Gewinnspiel-Kooperation besprechen ↗</a>
+    </div>`;
+}
+
 function renderArchive() {
   const archive = document.querySelector('#archiv');
   if (!archive) return;
@@ -93,6 +187,9 @@ function renderFooter() {
 }
 
 renderArchive();
+renderBrandReferences();
+renderPlacements();
+renderGiveaway();
 renderEpaper();
 renderContact();
 cleanPrototypeNotes();
