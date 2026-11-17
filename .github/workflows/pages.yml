@@ -27,8 +27,6 @@ jobs:
 
       - name: GitHub Pages vorbereiten
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Website verpacken
         uses: actions/upload-pages-artifact@v3
