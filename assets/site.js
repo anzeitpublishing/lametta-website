@@ -1,12 +1,21 @@
 const issues = [
   ['2025', 'assets/images/covers/lametta-2025.webp', 'https://lametta-mag.de/lametta-2025'],
-  ['2024', 'assets/images/covers/lametta-2024.webp', 'assets/documents/2024_ANZ_Lametta_RZ_digital_150dpi_ES_optimiert_e.pdf'],
-  ['2023', 'assets/images/covers/lametta-2023.webp', 'assets/documents/ePaper_Lametta_23_Einzelseiten_korr.pdf'],
-  ['2022', 'assets/images/covers/lametta-2022.webp', 'assets/documents/ANZ_Lametta_2911_22_Doppelseiten_medium.pdf'],
-  ['2021', 'assets/images/covers/lametta-2021.webp', 'assets/documents/Lametta_21_DS_PDFLink.pdf'],
-  ['2020', 'assets/images/covers/lametta-2020.webp', 'assets/documents/2020_ANZ_Lametta_RZ_DS_150dpi_V4.pdf'],
-  ['2019', 'assets/images/covers/lametta-2019.webp', 'assets/documents/2019_ANZ_Lametta_RZ_DS_medium_res.pdf'],
-  ['2018', 'assets/images/covers/lametta-2018.webp', 'assets/documents/181204_ANZEIT_Lametta_final_190x250mm_print.pdf']
+  ['2024', 'assets/images/covers/lametta-2024.webp', null],
+  ['2023', 'assets/images/covers/lametta-2023.webp', null],
+  ['2022', 'assets/images/covers/lametta-2022.webp', null],
+  ['2021', 'assets/images/covers/lametta-2021.webp', null],
+  ['2020', 'assets/images/covers/lametta-2020.webp', null],
+  ['2019', 'assets/images/covers/lametta-2019.webp', null],
+  ['2018', 'assets/images/covers/lametta-2018.webp', null]
+];
+
+const productSpotlights = [
+  ['Soundcore', 'AeroClips', 'assets/images/products/soundcore-aeroclips.png'],
+  ['Sonoro', 'AVATON', 'assets/images/products/sonoro-avaton.png'],
+  ['Hama', 'Smartwatch 8900', 'assets/images/products/hama-smartwatch-8900.png'],
+  ['Thoma Naturkosmetik', 'Serum', 'assets/images/products/thoma-serum.png'],
+  ['Lechuza', 'CANTO Stone', 'assets/images/products/lechuza-canto.png'],
+  ['Playmobil', 'Sky Trails', 'assets/images/products/playmobil-sky-trails.png']
 ];
 
 const featuredBrands = [
@@ -65,13 +74,42 @@ function renderPlacements() {
         <figcaption>Kuratiert statt katalogisiert</figcaption>
       </figure>
     </div>
-    <div class="product-stage" aria-label="Ausgewählte Produktfreisteller aus LAMETTA! 2025">
-      <img class="product-float product-float--1" src="assets/images/products/soundcore-aeroclips.png" alt="Soundcore AeroClips" loading="lazy">
-      <img class="product-float product-float--2" src="assets/images/products/sonoro-avaton.png" alt="Sonoro AVATON" loading="lazy">
-      <div class="product-stage-copy"><span class="hand-note">Freigestellt.</span><strong>Und trotzdem mitten in der Geschichte.</strong></div>
-      <img class="product-float product-float--3" src="assets/images/products/hama-smartwatch-8900.png" alt="Hama Smartwatch 8900" loading="lazy">
-      <img class="product-float product-float--4" src="assets/images/products/thoma-serum.png" alt="Thoma Naturkosmetik Serum" loading="lazy">
+    <div class="product-stage" aria-label="Wechselnde Produktinszenierung aus LAMETTA! 2025">
+      <div class="product-orbit" aria-live="polite">
+        <img class="product-spotlight" src="${productSpotlights[0][2]}" alt="${productSpotlights[0][0]} ${productSpotlights[0][1]}" loading="lazy">
+        <div class="product-caption"><span>${productSpotlights[0][0]}</span><strong>${productSpotlights[0][1]}</strong></div>
+      </div>
+      <div class="product-stage-copy"><span class="hand-note">Immer neu inszeniert.</span><strong>Ein Produkt.<br>Eine eigene Bühne.</strong></div>
+      <div class="product-dots" aria-label="Produkt auswählen"></div>
     </div>`;
+
+  const image = section.querySelector('.product-spotlight');
+  const caption = section.querySelector('.product-caption');
+  const dots = section.querySelector('.product-dots');
+  let active = 0;
+  productSpotlights.forEach((item, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.setAttribute('aria-label', `${item[0]} ${item[1]} zeigen`);
+    button.addEventListener('click', () => showProduct(index));
+    dots.appendChild(button);
+  });
+  function showProduct(index) {
+    active = index;
+    const [brand, product, src] = productSpotlights[index];
+    image.classList.add('is-changing');
+    window.setTimeout(() => {
+      image.src = src;
+      image.alt = `${brand} ${product}`;
+      caption.innerHTML = `<span>${brand}</span><strong>${product}</strong>`;
+      image.classList.remove('is-changing');
+    }, 180);
+    [...dots.children].forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === index));
+  }
+  showProduct(0);
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.setInterval(() => showProduct((active + 1) % productSpotlights.length), 4200);
+  }
 }
 
 function renderGiveaway() {
@@ -106,19 +144,21 @@ function renderGiveaway() {
 function renderArchive() {
   const archive = document.querySelector('#archiv');
   if (!archive) return;
-  const cards = issues.map(([year, cover, pdf]) => `
+  const cards = issues.map(([year, cover, epaper]) => `
     <article class="archive-card">
-      <a href="${pdf}" target="_blank" rel="noopener" aria-label="LAMETTA! ${year} als PDF öffnen">
-        <img src="${cover}" alt="Cover der LAMETTA!-Ausgabe ${year}" loading="lazy" width="720" height="948">
-      </a>
+      ${epaper ? `<a href="${epaper}" target="_blank" rel="noopener" aria-label="LAMETTA! ${year} als E-Paper öffnen">` : '<div class="archive-cover">'}
+      <img src="${cover}" alt="Cover der LAMETTA!-Ausgabe ${year}" loading="lazy" width="720" height="948">
+      ${epaper ? '</a>' : '</div>'}
       <h3>LAMETTA! ${year}</h3>
-      <a class="archive-link" href="${pdf}" target="_blank" rel="noopener">Ausgabe öffnen ↗</a>
+      ${epaper
+        ? `<a class="archive-link" href="${epaper}" target="_blank" rel="noopener">E-Paper öffnen ↗</a>`
+        : '<span class="archive-status">Coveransicht · kein E-Paper verfügbar</span>'}
     </article>`).join('');
 
   archive.innerHTML = `
     <div class="eyebrow">Das LAMETTA!-Archiv</div>
     <h2>Alle Ausgaben.</h2>
-    <p>Acht Jahre Geschenkideen, redaktionelle Geschichten und besondere Markeninszenierungen – vollständig zum Blättern.</p>
+    <p>Acht Jahre Geschenkideen, redaktionelle Geschichten und besondere Markeninszenierungen. Verlinkt werden ausschließlich Ausgaben, die als E-Paper im Browser verfügbar sind.</p>
     <div class="archive-grid">${cards}</div>`;
 }
 
@@ -137,7 +177,7 @@ function renderContact() {
         </div>
       </div>
       <figure class="contact-portrait">
-        <img src="assets/images/optimized/contact-portrait.webp" alt="Persönliche Ansprechpartnerin für LAMETTA!" loading="lazy" width="1600" height="1067">
+        <img src="assets/images/optimized/contact-portrait-cutout.png" alt="Persönliche Ansprechpartnerin für LAMETTA!" loading="lazy" width="1536" height="1024">
         <figcaption>Persönlich, direkt und mit Freude an guten Ideen.</figcaption>
       </figure>
     </div>`;
@@ -169,6 +209,13 @@ function upgradeHeroCover() {
   cover.height = 1895;
 }
 
+function upgradeHeroCopy() {
+  const title = document.querySelector('.herotxt h1');
+  const copy = document.querySelector('.herotxt p');
+  if (title) title.innerHTML = 'Wo Marken zu<br><i>Weihnachts-<wbr>geschichten</i><br>werden.';
+  if (copy) copy.textContent = 'LAMETTA! bringt besondere Produkte in ein inspirierendes redaktionelles Umfeld – überraschend inszeniert, hochwertig erzählt und sichtbar über Print und E-Paper.';
+}
+
 function cleanPrototypeNotes() {
   document.querySelector('#beispiele .note')?.remove();
   const factNote = document.querySelector('#fakten .note');
@@ -195,3 +242,4 @@ renderContact();
 cleanPrototypeNotes();
 renderFooter();
 upgradeHeroCover();
+upgradeHeroCopy();
