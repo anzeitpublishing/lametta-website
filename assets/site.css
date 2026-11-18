@@ -53,7 +53,7 @@ body { overflow-x: hidden; }
 
 .spread-showcase {
   position: relative;
-  min-height: clamp(620px, 76vw, 1040px);
+  min-height: clamp(900px, 112vw, 1540px);
   margin-top: 20px;
 }
 
@@ -65,6 +65,7 @@ body { overflow-x: hidden; }
 
 .spread-pair--left { left: 0; top: 0; transform: rotate(-1.2deg); }
 .spread-pair--right { right: -2vw; top: clamp(300px, 34vw, 500px); transform: rotate(1.1deg); }
+.spread-pair--center { left: 10vw; top: clamp(650px, 70vw, 980px); transform: rotate(-.5deg); }
 
 .spread-pages {
   display: grid;
@@ -127,7 +128,7 @@ body { overflow-x: hidden; }
   position: relative;
   overflow: hidden;
   display: grid;
-  grid-template-columns: minmax(240px, .75fr) minmax(220px, .62fr) minmax(220px, .62fr);
+  grid-template-columns: minmax(230px, .58fr) minmax(0, 1.42fr);
   gap: clamp(24px, 4vw, 62px);
   align-items: center;
   background: linear-gradient(135deg, var(--pink) 0 64%, var(--mauve) 64% 100%);
@@ -144,7 +145,21 @@ body { overflow-x: hidden; }
 .placement-formats-copy p { font-size: clamp(16px, 1.6vw, 20px); }
 
 .placement-format { margin: 0; }
-.placement-format--detail { translate: 0 55px; }
+.placement-carousel {
+  min-width: 0;
+  display: flex;
+  gap: clamp(18px, 2.5vw, 34px);
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: thin;
+  padding: 12px 10px 28px;
+}
+
+.placement-carousel .placement-format {
+  flex: 0 0 min(42%, 330px);
+  scroll-snap-align: start;
+}
 
 .placement-format img {
   display: block;
@@ -160,6 +175,18 @@ body { overflow-x: hidden; }
   font-weight: 500;
   letter-spacing: .12em;
   text-transform: uppercase;
+}
+
+.placement-carousel-controls { display: flex; gap: 10px; margin-top: 28px; }
+
+.placement-carousel-controls button {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  color: var(--ink);
+  background: transparent;
+  font-size: 22px;
 }
 
 .product-stage-copy {
@@ -565,16 +592,19 @@ body { overflow-x: hidden; }
 }
 
 @media (max-width: 720px) {
-  .spread-showcase { min-height: 100vw; }
+  .spread-showcase { min-height: 150vw; }
   .spread-pair { width: 82vw; }
   .spread-pair--right { top: 45vw; right: -3vw; }
+  .spread-pair--center { top: 92vw; left: 3vw; }
   .herotxt h1 { font-size: clamp(38px, 11vw, 62px); overflow-wrap: anywhere; }
   .placement-intro { grid-template-columns: 1fr; }
   .placement-collage { grid-template-columns: 1fr 1fr; }
   .placement-card--offset { margin-top: 16vw; }
   .placement-card--wide { grid-column: 1 / -1; width: 72%; margin: -7vw 0 0 auto; }
-  .placement-formats { grid-template-columns: 1fr 1fr; }
-  .placement-formats-copy { grid-column: 1 / -1; max-width: 640px; }
+  .placement-formats { grid-template-columns: 1fr; }
+  .placement-formats-copy { max-width: 640px; }
+  .placement-carousel { margin-inline: -2vw; }
+  .placement-carousel .placement-format { flex-basis: min(72vw, 330px); }
   .product-orbit { min-height: 310px; width: min(86vw, 460px); margin: 0 auto; }
   .product-spotlight { width: min(66vw, 330px); height: 245px; }
   .product-dots { right: 50%; transform: translateX(50%); }
@@ -592,12 +622,12 @@ body { overflow-x: hidden; }
 }
 
 @media (max-width: 430px) {
-  .spread-showcase { min-height: 112vw; }
+  .spread-showcase { min-height: 170vw; }
   .spread-pair { width: 88vw; }
   .spread-pair--right { top: 53vw; }
+  .spread-pair--center { top: 108vw; }
   .placement-formats { grid-template-columns: 1fr; }
   .placement-formats-copy { grid-column: auto; }
-  .placement-format--detail { translate: 0; }
   .issue-viewer { inset: 6px; }
   .archive-grid { gap: 24px 12px; }
   .archive-card .archive-link { font-size: 9px; }

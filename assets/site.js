@@ -27,7 +27,7 @@ const featuredBrands = [
 const prizeHighlights = [
   ['De’Longhi', 'La Specialista Touch', '850 €', 'assets/images/products/delonghi-la-specialista.png'],
   ['Eufy', 'Rasenmähroboter E15', '1.500 €', 'assets/images/products/eufy-e15.png'],
-  ['Sonos', 'Beam Gen 2', '500 €', 'assets/images/products/sonos-beam.png'],
+  ['Sonos', 'Beam Gen 2', '500 €', 'assets/images/products/sonos-beam-cutout.png'],
   ['Lechuza', 'CANTO Stone Set', '240 €', 'assets/images/products/lechuza-canto.png'],
   ['Hama', 'Smartwatch 8900', '150 €', 'assets/images/products/hama-smartwatch-8900.png'],
   ['Carrera', 'Hybrid Devil Drivers', '300 €', 'assets/images/products/carrera-hybrid-set.png'],
@@ -70,27 +70,46 @@ function renderPlacements() {
       </figure>
       <figure class="spread-pair spread-pair--right">
         <div class="spread-pages">
-          <img src="assets/images/placements/lametta-2025-page-7.webp" alt="Linke Seite einer LAMETTA!-Doppelseite mit Beauty- und Lifestyle-Produkten" loading="lazy">
-          <img src="assets/images/placements/lametta-2025-page-8.webp" alt="Rechte Seite einer LAMETTA!-Doppelseite" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-8.webp" alt="Linke Seite der Koch-Doppelseite mit Produkten und Rotkohl-Rouladen" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-9.jpg" alt="Rechte Seite der Koch-Doppelseite mit Küchenprodukten" loading="lazy">
         </div>
-        <figcaption>Kuratiert statt katalogisiert</figcaption>
+        <figcaption>Produkte, Genuss und Redaktion verbunden</figcaption>
+      </figure>
+      <figure class="spread-pair spread-pair--center">
+        <div class="spread-pages">
+          <img src="assets/images/placements/lametta-2025-page-7.webp" alt="LAMETTA!-Seite 7 mit Beauty- und Lifestyle-Produkten" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-17.jpg" alt="LAMETTA!-Seite 17 mit Sonos, Lechuza und Bosch" loading="lazy">
+        </div>
+        <figcaption>Vielfalt redaktionell inszeniert</figcaption>
       </figure>
     </div>
     <div class="placement-formats" aria-label="Beispiele redaktioneller Produktplatzierungen">
       <div class="placement-formats-copy">
         <span class="eyebrow">Platzierung im Heft</span>
         <h3>Das Produkt<br>im echten<br>Umfeld.</h3>
-        <p>Statt freigestellter Produktbilder zeigen wir hier die tatsächliche redaktionelle Einbindung – so wird unmittelbar sichtbar, wie Marke, Text und Gestaltung zusammenspielen.</p>
+        <p>Weitere echte Seiten aus LAMETTA! 2025 zeigen, wie unterschiedlich Produkte redaktionell eingebunden werden können.</p>
+        <div class="placement-carousel-controls">
+          <button type="button" data-carousel-direction="-1" aria-label="Vorheriges Beispiel">←</button>
+          <button type="button" data-carousel-direction="1" aria-label="Nächstes Beispiel">→</button>
+        </div>
       </div>
-      <figure class="placement-format placement-format--portrait">
-        <img src="assets/images/placements/lametta-2025-page-4.webp" alt="Produktplatzierung von Hama und Soundcore in LAMETTA! 2025" loading="lazy">
-        <figcaption>Redaktionelle Einbindung</figcaption>
-      </figure>
-      <figure class="placement-format placement-format--detail">
-        <img src="assets/images/placements/lametta-2025-page-7.webp" alt="Beauty- und Lifestyle-Produkte im redaktionellen Umfeld von LAMETTA! 2025" loading="lazy">
-        <figcaption>Produkt, Text und Gestaltung als Einheit</figcaption>
-      </figure>
+      <div class="placement-carousel" tabindex="0">
+        ${[
+          ['assets/images/placements/lametta-2025-page-4.webp', 'Hama, Soundcore und weitere Empfehlungen'],
+          ['assets/images/placements/lametta-2025-page-7.webp', 'Beauty und Lifestyle'],
+          ['assets/images/placements/lametta-2025-page-9.jpg', 'Küche und Genuss'],
+          ['assets/images/placements/lametta-2025-page-15.webp', 'Spiel, Design und Familie'],
+          ['assets/images/placements/lametta-2025-page-17.jpg', 'Wohnen, Klang und Technik']
+        ].map(([src, label]) => `<figure class="placement-format"><img src="${src}" alt="${label} in LAMETTA! 2025" loading="lazy"><figcaption>${label}</figcaption></figure>`).join('')}
+      </div>
     </div>`;
+
+  const carousel = section.querySelector('.placement-carousel');
+  section.querySelectorAll('[data-carousel-direction]').forEach((button) => {
+    button.addEventListener('click', () => {
+      carousel.scrollBy({ left: Number(button.dataset.carouselDirection) * carousel.clientWidth * .78, behavior: 'smooth' });
+    });
+  });
 }
 
 function renderGiveaway() {
