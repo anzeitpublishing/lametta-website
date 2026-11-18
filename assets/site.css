@@ -349,8 +349,9 @@ body { overflow-x: hidden; }
 .archive-card img {
   display: block;
   width: 100%;
-  aspect-ratio: 538.583 / 708.661;
-  object-fit: cover;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
   background: #fff;
   box-shadow: 8px 10px 0 #34181c14;
   transition: transform .2s ease, box-shadow .2s ease;
@@ -384,6 +385,7 @@ body { overflow-x: hidden; }
 
 .archive-cover {
   display: block;
+  width: 100%;
   padding: 0;
   border: 0;
   background: transparent;
@@ -570,6 +572,11 @@ body { overflow-x: hidden; }
   .issue-viewer { inset: 6px; }
   .archive-grid { gap: 24px 12px; }
   .archive-card .archive-link { font-size: 9px; }
+}
+
+@media (max-width: 600px) {
+  .archive-grid { grid-template-columns: 1fr; gap: 42px; }
+  .archive-card { max-width: 420px; margin-inline: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
