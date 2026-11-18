@@ -9,6 +9,17 @@ const issues = [
   ['2018', 'assets/images/covers/lametta-2018.webp', 'assets/documents/181204_ANZEIT_Lametta_final_190x250mm_print.pdf']
 ];
 
+const issuePreviews = {
+  '2025': ['assets/images/placements/lametta-2025-page-4.webp', 'assets/images/placements/lametta-2025-page-5.webp'],
+  '2024': ['assets/images/archive-previews/2024-04.jpg', 'assets/images/archive-previews/2024-05.jpg'],
+  '2023': ['assets/images/archive-previews/2023-04.jpg', 'assets/images/archive-previews/2023-05.jpg'],
+  '2022': ['assets/images/archive-previews/2022-04.jpg', 'assets/images/archive-previews/2022-05.jpg'],
+  '2021': ['assets/images/archive-previews/2021-04.jpg', 'assets/images/archive-previews/2021-05.jpg'],
+  '2020': ['assets/images/archive-previews/2020-04.jpg', 'assets/images/archive-previews/2020-05.jpg'],
+  '2019': ['assets/images/archive-previews/2019-04.jpg', 'assets/images/archive-previews/2019-05.jpg'],
+  '2018': ['assets/images/archive-previews/2018-04.jpg', 'assets/images/archive-previews/2018-05.jpg']
+};
+
 const productSpotlights = [
   ['Soundcore', 'AeroClips', 'assets/images/products/soundcore-aeroclips-cutout.png'],
   ['Sonoro', 'AVATON', 'assets/images/products/sonoro-avaton.png'],
@@ -20,8 +31,9 @@ const productSpotlights = [
 
 const featuredBrands = [
   'Hama', 'Soundcore', 'Mind Games', 'Diogenes', 'Sonoro', 'Trinny London',
-  'L’Occitane', 'Sage', 'Bosch', 'De’Longhi', 'Sonos', 'Eufy', 'Lechuza',
-  'Playmobil', 'Ravensburger', 'Carrera', 'Feiler', 'Muck Boot'
+  'Thoma Naturkosmetik', 'Feiler', 'Mampe', 'Bosch', 'De’Longhi', 'Brandgut',
+  'Sonos', 'Louis Poulsen', 'Lechuza', 'Playmobil', 'Zuru', 'Ulbrich Spiele',
+  'Carrera', 'Benecos', 'Tolino', 'Ravensburger'
 ];
 
 const prizeHighlights = [
@@ -119,20 +131,46 @@ function renderArchive() {
   if (!archive) return;
   const cards = issues.map(([year, cover]) => `
     <article class="archive-card">
-      <div class="archive-cover">
+      <button class="archive-cover" type="button" data-preview-year="${year}" aria-label="Vorschau der LAMETTA!-Ausgabe ${year} öffnen">
       <img src="${cover}" alt="Cover der LAMETTA!-Ausgabe ${year}" loading="lazy" width="720" height="948">
-      </div>
+      </button>
       <h3>LAMETTA! ${year}</h3>
-      ${year === '2025'
-        ? '<a class="archive-link" href="https://lametta-mag.de/lametta-2025" target="_blank" rel="noopener">E-Paper öffnen ↗</a>'
-        : '<span class="archive-status">Archivcover · kein PDF-Zugriff</span>'}
+      <button class="archive-link" type="button" data-preview-year="${year}">Vorschau ansehen ↗</button>
+      ${year === '2025' ? '<a class="archive-status" href="https://lametta-mag.de/lametta-2025" target="_blank" rel="noopener">Vollständiges E-Paper 2025 ↗</a>' : ''}
     </article>`).join('');
 
   archive.innerHTML = `
     <div class="eyebrow">Das LAMETTA!-Archiv</div>
     <h2>Alle Ausgaben.</h2>
-    <p>Die Cover dokumentieren alle bisherigen Ausgaben. Verlinkt wird ausschließlich das verfügbare E-Paper 2025; ältere PDF-Dateien werden nicht öffentlich angeboten.</p>
-    <div class="archive-grid">${cards}</div>`;
+    <p>Die Cover dokumentieren alle bisherigen Ausgaben. Zu jedem Jahr gibt es eine ausgewählte Leseprobe im geschützten Vorschaumodus – ohne öffentlich verlinkte PDF-Datei und ohne Downloadbutton.</p>
+    <div class="archive-grid">${cards}</div>
+    <div class="preview-reader" role="dialog" aria-modal="true" aria-labelledby="preview-reader-title" hidden>
+      <div class="preview-reader-bar">
+        <strong id="preview-reader-title">LAMETTA!-Vorschau</strong>
+        <button type="button" class="preview-reader-close" aria-label="Vorschau schließen">×</button>
+      </div>
+      <div class="preview-reader-pages"></div>
+    </div>`;
+
+  const reader = archive.querySelector('.preview-reader');
+  const readerTitle = reader.querySelector('#preview-reader-title');
+  const readerPages = reader.querySelector('.preview-reader-pages');
+  archive.querySelectorAll('[data-preview-year]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const year = button.dataset.previewYear;
+      readerTitle.textContent = `LAMETTA! ${year} · Leseprobe`;
+      readerPages.innerHTML = issuePreviews[year]
+        .map((src, index) => `<img src="${src}" alt="Vorschauseite ${index + 1} der LAMETTA!-Ausgabe ${year}">`)
+        .join('');
+      reader.hidden = false;
+      document.body.classList.add('viewer-open');
+    });
+  });
+  reader.querySelector('.preview-reader-close').addEventListener('click', () => {
+    reader.hidden = true;
+    readerPages.innerHTML = '';
+    document.body.classList.remove('viewer-open');
+  });
 }
 
 function renderContact() {
