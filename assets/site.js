@@ -1,20 +1,20 @@
 const issues = [
   ['2025', 'assets/images/covers/lametta-2025.webp', 'https://lametta-mag.de/lametta-2025'],
-  ['2024', 'assets/images/covers/lametta-2024.webp', null],
-  ['2023', 'assets/images/covers/lametta-2023.webp', null],
-  ['2022', 'assets/images/covers/lametta-2022.webp', null],
-  ['2021', 'assets/images/covers/lametta-2021.webp', null],
-  ['2020', 'assets/images/covers/lametta-2020.webp', null],
-  ['2019', 'assets/images/covers/lametta-2019.webp', null],
-  ['2018', 'assets/images/covers/lametta-2018.webp', null]
+  ['2024', 'assets/images/covers/lametta-2024.webp', 'assets/documents/2024_ANZ_Lametta_RZ_digital_150dpi_ES_optimiert_e.pdf'],
+  ['2023', 'assets/images/covers/lametta-2023.webp', 'assets/documents/ePaper_Lametta_23_Einzelseiten_korr.pdf'],
+  ['2022', 'assets/images/covers/lametta-2022.webp', 'assets/documents/ANZ_Lametta_2911_22_Doppelseiten_medium.pdf'],
+  ['2021', 'assets/images/covers/lametta-2021.webp', 'assets/documents/Lametta_21_DS_PDFLink.pdf'],
+  ['2020', 'assets/images/covers/lametta-2020.webp', 'assets/documents/2020_ANZ_Lametta_RZ_DS_150dpi_V4.pdf'],
+  ['2019', 'assets/images/covers/lametta-2019.webp', 'assets/documents/2019_ANZ_Lametta_RZ_DS_medium_res.pdf'],
+  ['2018', 'assets/images/covers/lametta-2018.webp', 'assets/documents/181204_ANZEIT_Lametta_final_190x250mm_print.pdf']
 ];
 
 const productSpotlights = [
-  ['Soundcore', 'AeroClips', 'assets/images/products/soundcore-aeroclips.png'],
+  ['Soundcore', 'AeroClips', 'assets/images/products/soundcore-aeroclips-cutout.png'],
   ['Sonoro', 'AVATON', 'assets/images/products/sonoro-avaton.png'],
-  ['Hama', 'Smartwatch 8900', 'assets/images/products/hama-smartwatch-8900.png'],
+  ['Hama', 'Smartwatch 8900', 'assets/images/products/hama-smartwatch-8900-cutout.png'],
   ['Thoma Naturkosmetik', 'Serum', 'assets/images/products/thoma-serum.png'],
-  ['Lechuza', 'CANTO Stone', 'assets/images/products/lechuza-canto.png'],
+  ['Lechuza', 'CANTO Stone', 'assets/images/products/lechuza-canto-cutout.png'],
   ['Playmobil', 'Sky Trails', 'assets/images/products/playmobil-sky-trails.png']
 ];
 
@@ -57,21 +57,30 @@ function renderPlacements() {
       </div>
       <div>
         <p>Produkte stehen bei LAMETTA! nicht in einem austauschbaren Shop-Raster. Sie werden Teil einer redaktionellen Weihnachtswelt – mit eigenem Rhythmus, überraschenden Nachbarschaften und viel Raum für ihre Geschichte.</p>
-        <p class="hand-note">So kann eine Marke im Magazin aussehen.</p>
+        <p class="placement-note">So kann eine Marke im Magazin aussehen.</p>
       </div>
     </div>
-    <div class="placement-collage">
-      <figure class="placement-card placement-card--tall">
-        <img src="assets/images/placements/lametta-2025-page-4.webp" alt="Redaktionelle LAMETTA!-Platzierung mit Hama und Soundcore" loading="lazy" width="1400" height="1843">
+    <div class="spread-showcase">
+      <figure class="spread-pair spread-pair--left">
+        <div class="spread-pages">
+          <img src="assets/images/placements/lametta-2025-page-4.webp" alt="Linke Seite einer LAMETTA!-Doppelseite mit Hama und Soundcore" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-5.webp" alt="Rechte Seite einer LAMETTA!-Doppelseite mit Mind Games, Diogenes und Sonoro" loading="lazy">
+        </div>
         <figcaption>Produkt trifft Persönlichkeit</figcaption>
       </figure>
-      <figure class="placement-card placement-card--offset">
-        <img src="assets/images/placements/lametta-2025-page-5.webp" alt="LAMETTA!-Produktseite mit Mind Games, Diogenes und Sonoro" loading="lazy" width="1400" height="1843">
-        <figcaption>Luxus, Kultur und Design</figcaption>
-      </figure>
-      <figure class="placement-card placement-card--wide">
-        <img src="assets/images/placements/lametta-2025-page-7.webp" alt="LAMETTA!-Produktseite mit Beauty- und Lifestyle-Produkten" loading="lazy" width="1400" height="1843">
+      <figure class="spread-pair spread-pair--right">
+        <div class="spread-pages">
+          <img src="assets/images/placements/lametta-2025-page-7.webp" alt="Linke Seite einer LAMETTA!-Doppelseite mit Beauty- und Lifestyle-Produkten" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-8.webp" alt="Rechte Seite einer LAMETTA!-Doppelseite" loading="lazy">
+        </div>
         <figcaption>Kuratiert statt katalogisiert</figcaption>
+      </figure>
+      <figure class="spread-pair spread-pair--center">
+        <div class="spread-pages">
+          <img src="assets/images/placements/lametta-2025-page-22.webp" alt="Linke Seite einer weiteren LAMETTA!-Doppelseite" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-23.webp" alt="Rechte Seite einer weiteren LAMETTA!-Doppelseite" loading="lazy">
+        </div>
+        <figcaption>Editorial gedacht. Als Doppelseite inszeniert.</figcaption>
       </figure>
     </div>
     <div class="product-stage" aria-label="Wechselnde Produktinszenierung aus LAMETTA! 2025">
@@ -144,22 +153,46 @@ function renderGiveaway() {
 function renderArchive() {
   const archive = document.querySelector('#archiv');
   if (!archive) return;
-  const cards = issues.map(([year, cover, epaper]) => `
+  const cards = issues.map(([year, cover, document]) => `
     <article class="archive-card">
-      ${epaper ? `<a href="${epaper}" target="_blank" rel="noopener" aria-label="LAMETTA! ${year} als E-Paper öffnen">` : '<div class="archive-cover">'}
+      <button class="archive-cover" type="button" data-document="${document}" data-year="${year}" aria-label="LAMETTA! ${year} ansehen">
       <img src="${cover}" alt="Cover der LAMETTA!-Ausgabe ${year}" loading="lazy" width="720" height="948">
-      ${epaper ? '</a>' : '</div>'}
+      </button>
       <h3>LAMETTA! ${year}</h3>
-      ${epaper
-        ? `<a class="archive-link" href="${epaper}" target="_blank" rel="noopener">E-Paper öffnen ↗</a>`
-        : '<span class="archive-status">Coveransicht · kein E-Paper verfügbar</span>'}
+      <button class="archive-link" type="button" data-document="${document}" data-year="${year}">Ausgabe ansehen ↗</button>
     </article>`).join('');
 
   archive.innerHTML = `
     <div class="eyebrow">Das LAMETTA!-Archiv</div>
     <h2>Alle Ausgaben.</h2>
-    <p>Acht Jahre Geschenkideen, redaktionelle Geschichten und besondere Markeninszenierungen. Verlinkt werden ausschließlich Ausgaben, die als E-Paper im Browser verfügbar sind.</p>
-    <div class="archive-grid">${cards}</div>`;
+    <p>Acht Jahre Geschenkideen, redaktionelle Geschichten und besondere Markeninszenierungen – direkt auf der Website ansehen, ohne einen Download starten zu müssen.</p>
+    <div class="archive-grid">${cards}</div>
+    <div class="issue-viewer" role="dialog" aria-modal="true" aria-labelledby="issue-viewer-title" hidden>
+      <div class="issue-viewer-bar">
+        <strong id="issue-viewer-title">LAMETTA! ansehen</strong>
+        <button type="button" class="issue-viewer-close" aria-label="Ansicht schließen">×</button>
+      </div>
+      <iframe title="LAMETTA!-Ausgabe" loading="lazy"></iframe>
+    </div>`;
+
+  const viewer = archive.querySelector('.issue-viewer');
+  const frame = viewer.querySelector('iframe');
+  const title = viewer.querySelector('#issue-viewer-title');
+  archive.querySelectorAll('[data-document]').forEach((button) => {
+    button.addEventListener('click', () => {
+      title.textContent = `LAMETTA! ${button.dataset.year}`;
+      frame.src = button.dataset.document.startsWith('http')
+        ? button.dataset.document
+        : `${button.dataset.document}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`;
+      viewer.hidden = false;
+      document.body.classList.add('viewer-open');
+    });
+  });
+  viewer.querySelector('.issue-viewer-close').addEventListener('click', () => {
+    viewer.hidden = true;
+    frame.src = 'about:blank';
+    document.body.classList.remove('viewer-open');
+  });
 }
 
 function renderContact() {
@@ -177,7 +210,7 @@ function renderContact() {
         </div>
       </div>
       <figure class="contact-portrait">
-        <img src="assets/images/optimized/contact-portrait-cutout.png" alt="Persönliche Ansprechpartnerin für LAMETTA!" loading="lazy" width="1536" height="1024">
+        <img src="assets/images/optimized/contact-portrait.webp" alt="Persönliche Ansprechpartnerin für LAMETTA!" loading="lazy" width="1600" height="1067">
         <figcaption>Persönlich, direkt und mit Freude an guten Ideen.</figcaption>
       </figure>
     </div>`;

@@ -41,6 +41,56 @@ body { overflow-x: hidden; }
   margin: 28px 0 0;
 }
 
+.placement-note {
+  margin: 28px 0 0;
+  color: var(--red);
+  font-family: 'futura-pt', Arial, sans-serif;
+  font-size: clamp(16px, 1.7vw, 22px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: .02em;
+}
+
+.spread-showcase {
+  position: relative;
+  min-height: clamp(900px, 112vw, 1540px);
+  margin-top: 20px;
+}
+
+.spread-pair {
+  position: absolute;
+  width: min(72vw, 900px);
+  margin: 0;
+}
+
+.spread-pair--left { left: 0; top: 0; transform: rotate(-1.2deg); }
+.spread-pair--right { right: -2vw; top: clamp(300px, 34vw, 500px); transform: rotate(1.1deg); }
+.spread-pair--center { left: 10vw; top: clamp(650px, 70vw, 980px); transform: rotate(-.5deg); }
+
+.spread-pages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  filter: drop-shadow(16px 20px 15px #34181c24);
+}
+
+.spread-pages img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.spread-pages img + img { margin-left: -1px; }
+
+.spread-pair figcaption {
+  margin-top: 14px;
+  font-family: 'futura-pt', Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
 .placement-collage {
   display: grid;
   grid-template-columns: 1.05fr .85fr 1fr;
@@ -97,9 +147,7 @@ body { overflow-x: hidden; }
   position: relative;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  background: #ffffffb8;
-  box-shadow: 0 0 0 28px #ffffff24;
+  background: transparent;
 }
 
 .product-spotlight {
@@ -326,9 +374,21 @@ body { overflow-x: hidden; }
   letter-spacing: .12em;
   text-transform: uppercase;
   text-underline-offset: 4px;
+  padding: 0;
+  border: 0;
+  text-align: left;
+  background: transparent;
+  color: inherit;
+  text-decoration: underline;
 }
 
-.archive-cover { cursor: default; }
+.archive-cover {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
 
 .archive-status {
   font-family: 'futura-pt', Arial, sans-serif;
@@ -338,6 +398,43 @@ body { overflow-x: hidden; }
   text-transform: uppercase;
   color: var(--taupe);
 }
+
+.issue-viewer[hidden] { display: none; }
+
+.issue-viewer {
+  position: fixed;
+  inset: 18px;
+  z-index: 30;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background: var(--cream);
+  box-shadow: 0 0 0 100vmax #34181ce8, 0 24px 80px #0008;
+}
+
+.issue-viewer-bar {
+  min-height: 58px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: #fff;
+  background: var(--wine);
+  font-family: 'futura-pt', Arial, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.issue-viewer-close {
+  border: 0;
+  color: #fff;
+  background: transparent;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.issue-viewer iframe { width: 100%; height: 100%; border: 0; background: #d6dbe4; }
+.viewer-open { overflow: hidden; }
 
 .contact-inner {
   display: grid;
@@ -400,9 +497,11 @@ body { overflow-x: hidden; }
 .contact-portrait img {
   display: block;
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(16px 20px 18px #34181c52);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 60% center;
+  border-radius: 48% 48% 10px 10px;
+  box-shadow: 16px 20px 0 #34181c42;
 }
 
 .contact-portrait figcaption {
@@ -437,6 +536,10 @@ body { overflow-x: hidden; }
 }
 
 @media (max-width: 720px) {
+  .spread-showcase { min-height: 150vw; }
+  .spread-pair { width: 82vw; }
+  .spread-pair--right { top: 45vw; right: -3vw; }
+  .spread-pair--center { top: 92vw; left: 3vw; }
   .herotxt h1 { font-size: clamp(38px, 11vw, 62px); overflow-wrap: anywhere; }
   .placement-intro { grid-template-columns: 1fr; }
   .placement-collage { grid-template-columns: 1fr 1fr; }
@@ -460,6 +563,11 @@ body { overflow-x: hidden; }
 }
 
 @media (max-width: 430px) {
+  .spread-showcase { min-height: 170vw; }
+  .spread-pair { width: 88vw; }
+  .spread-pair--right { top: 53vw; }
+  .spread-pair--center { top: 108vw; }
+  .issue-viewer { inset: 6px; }
   .archive-grid { gap: 24px 12px; }
   .archive-card .archive-link { font-size: 9px; }
 }
@@ -472,3 +580,5 @@ body { overflow-x: hidden; }
   .prize-track .prize-card:nth-child(n+9) { display: none; }
   .archive-card img { transition: none; }
 }
+
+h1 i, h2 i, h3 i { font-style: normal; }
