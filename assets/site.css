@@ -53,7 +53,7 @@ body { overflow-x: hidden; }
 
 .spread-showcase {
   position: relative;
-  min-height: clamp(900px, 112vw, 1540px);
+  min-height: clamp(620px, 76vw, 1040px);
   margin-top: 20px;
 }
 
@@ -65,7 +65,6 @@ body { overflow-x: hidden; }
 
 .spread-pair--left { left: 0; top: 0; transform: rotate(-1.2deg); }
 .spread-pair--right { right: -2vw; top: clamp(300px, 34vw, 500px); transform: rotate(1.1deg); }
-.spread-pair--center { left: 10vw; top: clamp(650px, 70vw, 980px); transform: rotate(-.5deg); }
 
 .spread-pages {
   display: grid;
@@ -122,17 +121,45 @@ body { overflow-x: hidden; }
   text-transform: uppercase;
 }
 
-.product-stage {
-  min-height: 460px;
+.placement-formats {
   margin: 110px -7vw -90px;
-  padding: 60px 7vw;
+  padding: clamp(55px, 8vw, 105px) 7vw;
   position: relative;
   overflow: hidden;
   display: grid;
-  grid-template-columns: minmax(260px, .85fr) minmax(300px, 1fr);
-  gap: clamp(35px, 7vw, 110px);
+  grid-template-columns: minmax(240px, .75fr) minmax(220px, .62fr) minmax(220px, .62fr);
+  gap: clamp(24px, 4vw, 62px);
   align-items: center;
   background: linear-gradient(135deg, var(--pink) 0 64%, var(--mauve) 64% 100%);
+}
+
+.placement-formats-copy h3 {
+  margin: 12px 0 24px;
+  font-family: 'the-seasons', 'minion-pro', Georgia, serif;
+  font-size: clamp(40px, 5vw, 70px);
+  font-weight: 400;
+  line-height: .93;
+}
+
+.placement-formats-copy p { font-size: clamp(16px, 1.6vw, 20px); }
+
+.placement-format { margin: 0; }
+.placement-format--detail { translate: 0 55px; }
+
+.placement-format img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 14px 18px 0 #34181c1a;
+}
+
+.placement-format figcaption {
+  margin-top: 16px;
+  font-family: 'futura-pt', Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
 
 .product-stage-copy {
@@ -440,7 +467,7 @@ body { overflow-x: hidden; }
 
 .contact-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 440px);
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 290px);
   gap: clamp(45px, 8vw, 120px);
   align-items: center;
 }
@@ -493,7 +520,7 @@ body { overflow-x: hidden; }
   margin: 0;
   position: relative;
   justify-self: center;
-  width: min(100%, 410px);
+  width: min(100%, 280px);
 }
 
 .contact-portrait img {
@@ -509,7 +536,7 @@ body { overflow-x: hidden; }
 .contact-portrait figcaption {
   margin-top: 18px;
   font-family: 'homemade-apple', 'the-seasons', Georgia, serif;
-  font-size: clamp(22px, 2.5vw, 34px);
+  font-size: clamp(18px, 2vw, 25px);
   line-height: 1.25;
 }
 
@@ -538,16 +565,16 @@ body { overflow-x: hidden; }
 }
 
 @media (max-width: 720px) {
-  .spread-showcase { min-height: 150vw; }
+  .spread-showcase { min-height: 100vw; }
   .spread-pair { width: 82vw; }
   .spread-pair--right { top: 45vw; right: -3vw; }
-  .spread-pair--center { top: 92vw; left: 3vw; }
   .herotxt h1 { font-size: clamp(38px, 11vw, 62px); overflow-wrap: anywhere; }
   .placement-intro { grid-template-columns: 1fr; }
   .placement-collage { grid-template-columns: 1fr 1fr; }
   .placement-card--offset { margin-top: 16vw; }
   .placement-card--wide { grid-column: 1 / -1; width: 72%; margin: -7vw 0 0 auto; }
-  .product-stage { min-height: 620px; grid-template-columns: 1fr; text-align: center; }
+  .placement-formats { grid-template-columns: 1fr 1fr; }
+  .placement-formats-copy { grid-column: 1 / -1; max-width: 640px; }
   .product-orbit { min-height: 310px; width: min(86vw, 460px); margin: 0 auto; }
   .product-spotlight { width: min(66vw, 330px); height: 245px; }
   .product-dots { right: 50%; transform: translateX(50%); }
@@ -561,14 +588,16 @@ body { overflow-x: hidden; }
   .epaper-inner { grid-template-columns: 1fr; }
   .epaper-cover { max-width: 420px; }
   .contact-inner { grid-template-columns: 1fr; }
-  .contact-portrait { max-width: 520px; }
+  .contact-portrait { max-width: 260px; justify-self: start; }
 }
 
 @media (max-width: 430px) {
-  .spread-showcase { min-height: 170vw; }
+  .spread-showcase { min-height: 112vw; }
   .spread-pair { width: 88vw; }
   .spread-pair--right { top: 53vw; }
-  .spread-pair--center { top: 108vw; }
+  .placement-formats { grid-template-columns: 1fr; }
+  .placement-formats-copy { grid-column: auto; }
+  .placement-format--detail { translate: 0; }
   .issue-viewer { inset: 6px; }
   .archive-grid { gap: 24px 12px; }
   .archive-card .archive-link { font-size: 9px; }

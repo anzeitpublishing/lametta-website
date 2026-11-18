@@ -75,50 +75,22 @@ function renderPlacements() {
         </div>
         <figcaption>Kuratiert statt katalogisiert</figcaption>
       </figure>
-      <figure class="spread-pair spread-pair--center">
-        <div class="spread-pages">
-          <img src="assets/images/placements/lametta-2025-page-22.webp" alt="Linke Seite einer weiteren LAMETTA!-Doppelseite" loading="lazy">
-          <img src="assets/images/placements/lametta-2025-page-23.webp" alt="Rechte Seite einer weiteren LAMETTA!-Doppelseite" loading="lazy">
-        </div>
-        <figcaption>Editorial gedacht. Als Doppelseite inszeniert.</figcaption>
-      </figure>
     </div>
-    <div class="product-stage" aria-label="Wechselnde Produktinszenierung aus LAMETTA! 2025">
-      <div class="product-orbit" aria-live="polite">
-        <img class="product-spotlight" src="${productSpotlights[0][2]}" alt="${productSpotlights[0][0]} ${productSpotlights[0][1]}" loading="lazy">
-        <div class="product-caption"><span>${productSpotlights[0][0]}</span><strong>${productSpotlights[0][1]}</strong></div>
+    <div class="placement-formats" aria-label="Beispiele redaktioneller Produktplatzierungen">
+      <div class="placement-formats-copy">
+        <span class="eyebrow">Platzierung im Heft</span>
+        <h3>Das Produkt<br>im echten<br>Umfeld.</h3>
+        <p>Statt freigestellter Produktbilder zeigen wir hier die tatsächliche redaktionelle Einbindung – so wird unmittelbar sichtbar, wie Marke, Text und Gestaltung zusammenspielen.</p>
       </div>
-      <div class="product-stage-copy"><span class="hand-note">Immer neu inszeniert.</span><strong>Ein Produkt.<br>Eine eigene Bühne.</strong></div>
-      <div class="product-dots" aria-label="Produkt auswählen"></div>
+      <figure class="placement-format placement-format--portrait">
+        <img src="assets/images/placements/lametta-2025-page-4.webp" alt="Produktplatzierung von Hama und Soundcore in LAMETTA! 2025" loading="lazy">
+        <figcaption>Redaktionelle Einbindung</figcaption>
+      </figure>
+      <figure class="placement-format placement-format--detail">
+        <img src="assets/images/placements/lametta-2025-page-7.webp" alt="Beauty- und Lifestyle-Produkte im redaktionellen Umfeld von LAMETTA! 2025" loading="lazy">
+        <figcaption>Produkt, Text und Gestaltung als Einheit</figcaption>
+      </figure>
     </div>`;
-
-  const image = section.querySelector('.product-spotlight');
-  const caption = section.querySelector('.product-caption');
-  const dots = section.querySelector('.product-dots');
-  let active = 0;
-  productSpotlights.forEach((item, index) => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.setAttribute('aria-label', `${item[0]} ${item[1]} zeigen`);
-    button.addEventListener('click', () => showProduct(index));
-    dots.appendChild(button);
-  });
-  function showProduct(index) {
-    active = index;
-    const [brand, product, src] = productSpotlights[index];
-    image.classList.add('is-changing');
-    window.setTimeout(() => {
-      image.src = src;
-      image.alt = `${brand} ${product}`;
-      caption.innerHTML = `<span>${brand}</span><strong>${product}</strong>`;
-      image.classList.remove('is-changing');
-    }, 180);
-    [...dots.children].forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === index));
-  }
-  showProduct(0);
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.setInterval(() => showProduct((active + 1) % productSpotlights.length), 4200);
-  }
 }
 
 function renderGiveaway() {
@@ -205,8 +177,8 @@ function renderContact() {
         <h2>Gute Ideen<br>beginnen mit<br><i>einem Gespräch.</i></h2>
         <p>Sie möchten Ihre Marke in der nächsten LAMETTA!-Ausgabe präsentieren? Lassen Sie uns über die passende Kooperation sprechen. Mediadaten mit Formaten, technischen Angaben und Preisen senden wir gern persönlich auf Anfrage.</p>
         <div class="contact-actions">
-          <a class="cta" href="mailto:info@lametta-mag.de?subject=Gespr%C3%A4ch%20zu%20LAMETTA!%202026">Gespräch vereinbaren ↗</a>
-          <a class="cta cta-secondary" href="mailto:info@lametta-mag.de?subject=Mediadaten%20LAMETTA!%202026">Mediadaten anfragen ↗</a>
+          <a class="cta" href="mailto:hallo@lametta-mag.de?subject=Gespr%C3%A4ch%20zu%20LAMETTA!%202026">Gespräch vereinbaren ↗</a>
+          <a class="cta cta-secondary" href="mailto:hallo@lametta-mag.de?subject=Mediadaten%20LAMETTA!%202026">Mediadaten anfragen ↗</a>
         </div>
       </div>
       <figure class="contact-portrait">
@@ -245,7 +217,7 @@ function upgradeHeroCover() {
 function upgradeHeroCopy() {
   const title = document.querySelector('.herotxt h1');
   const copy = document.querySelector('.herotxt p');
-  if (title) title.innerHTML = 'Wo Marken zu<br><i>Weihnachts-<wbr>geschichten</i><br>werden.';
+  if (title) title.innerHTML = 'Wo Marken zu<br><i>Weihnachtsgeschichten</i><br>werden.';
   if (copy) copy.textContent = 'LAMETTA! bringt besondere Produkte in ein inspirierendes redaktionelles Umfeld – überraschend inszeniert, hochwertig erzählt und sichtbar über Print und E-Paper.';
 }
 
