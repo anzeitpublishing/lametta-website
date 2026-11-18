@@ -82,34 +82,7 @@ function renderPlacements() {
         </div>
         <figcaption>Vielfalt redaktionell inszeniert</figcaption>
       </figure>
-    </div>
-    <div class="placement-formats" aria-label="Beispiele redaktioneller Produktplatzierungen">
-      <div class="placement-formats-copy">
-        <span class="eyebrow">Platzierung im Heft</span>
-        <h3>Das Produkt<br>im echten<br>Umfeld.</h3>
-        <p>Weitere echte Seiten aus LAMETTA! 2025 zeigen, wie unterschiedlich Produkte redaktionell eingebunden werden können.</p>
-        <div class="placement-carousel-controls">
-          <button type="button" data-carousel-direction="-1" aria-label="Vorheriges Beispiel">←</button>
-          <button type="button" data-carousel-direction="1" aria-label="Nächstes Beispiel">→</button>
-        </div>
-      </div>
-      <div class="placement-carousel" tabindex="0">
-        ${[
-          ['assets/images/placements/lametta-2025-page-4.webp', 'Hama, Soundcore und weitere Empfehlungen'],
-          ['assets/images/placements/lametta-2025-page-7.webp', 'Beauty und Lifestyle'],
-          ['assets/images/placements/lametta-2025-page-9.jpg', 'Küche und Genuss'],
-          ['assets/images/placements/lametta-2025-page-15.webp', 'Spiel, Design und Familie'],
-          ['assets/images/placements/lametta-2025-page-17.jpg', 'Wohnen, Klang und Technik']
-        ].map(([src, label]) => `<figure class="placement-format"><img src="${src}" alt="${label} in LAMETTA! 2025" loading="lazy"><figcaption>${label}</figcaption></figure>`).join('')}
-      </div>
     </div>`;
-
-  const carousel = section.querySelector('.placement-carousel');
-  section.querySelectorAll('[data-carousel-direction]').forEach((button) => {
-    button.addEventListener('click', () => {
-      carousel.scrollBy({ left: Number(button.dataset.carouselDirection) * carousel.clientWidth * .78, behavior: 'smooth' });
-    });
-  });
 }
 
 function renderGiveaway() {
@@ -144,46 +117,22 @@ function renderGiveaway() {
 function renderArchive() {
   const archive = document.querySelector('#archiv');
   if (!archive) return;
-  const cards = issues.map(([year, cover, document]) => `
+  const cards = issues.map(([year, cover]) => `
     <article class="archive-card">
-      <button class="archive-cover" type="button" data-document="${document}" data-year="${year}" aria-label="LAMETTA! ${year} ansehen">
+      <div class="archive-cover">
       <img src="${cover}" alt="Cover der LAMETTA!-Ausgabe ${year}" loading="lazy" width="720" height="948">
-      </button>
+      </div>
       <h3>LAMETTA! ${year}</h3>
-      <button class="archive-link" type="button" data-document="${document}" data-year="${year}">Ausgabe ansehen ↗</button>
+      ${year === '2025'
+        ? '<a class="archive-link" href="https://lametta-mag.de/lametta-2025" target="_blank" rel="noopener">E-Paper öffnen ↗</a>'
+        : '<span class="archive-status">Archivcover · kein PDF-Zugriff</span>'}
     </article>`).join('');
 
   archive.innerHTML = `
     <div class="eyebrow">Das LAMETTA!-Archiv</div>
     <h2>Alle Ausgaben.</h2>
-    <p>Acht Jahre Geschenkideen, redaktionelle Geschichten und besondere Markeninszenierungen – direkt auf der Website ansehen, ohne einen Download starten zu müssen.</p>
-    <div class="archive-grid">${cards}</div>
-    <div class="issue-viewer" role="dialog" aria-modal="true" aria-labelledby="issue-viewer-title" hidden>
-      <div class="issue-viewer-bar">
-        <strong id="issue-viewer-title">LAMETTA! ansehen</strong>
-        <button type="button" class="issue-viewer-close" aria-label="Ansicht schließen">×</button>
-      </div>
-      <iframe title="LAMETTA!-Ausgabe" loading="lazy"></iframe>
-    </div>`;
-
-  const viewer = archive.querySelector('.issue-viewer');
-  const frame = viewer.querySelector('iframe');
-  const title = viewer.querySelector('#issue-viewer-title');
-  archive.querySelectorAll('[data-document]').forEach((button) => {
-    button.addEventListener('click', () => {
-      title.textContent = `LAMETTA! ${button.dataset.year}`;
-      frame.src = button.dataset.document.startsWith('http')
-        ? button.dataset.document
-        : `${button.dataset.document}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`;
-      viewer.hidden = false;
-      document.body.classList.add('viewer-open');
-    });
-  });
-  viewer.querySelector('.issue-viewer-close').addEventListener('click', () => {
-    viewer.hidden = true;
-    frame.src = 'about:blank';
-    document.body.classList.remove('viewer-open');
-  });
+    <p>Die Cover dokumentieren alle bisherigen Ausgaben. Verlinkt wird ausschließlich das verfügbare E-Paper 2025; ältere PDF-Dateien werden nicht öffentlich angeboten.</p>
+    <div class="archive-grid">${cards}</div>`;
 }
 
 function renderContact() {
@@ -200,7 +149,7 @@ function renderContact() {
           <a class="cta cta-secondary" href="mailto:hallo@lametta-mag.de?subject=Mediadaten%20LAMETTA!%202026">Mediadaten anfragen ↗</a>
         </div>
       </div>
-      <figure class="contact-portrait">
+      <figure class="contact-portrait contact-portrait--large">
         <img src="assets/images/optimized/contact-portrait.webp" alt="Persönliche Ansprechpartnerin für LAMETTA!" loading="lazy" width="1600" height="1067">
         <figcaption>Persönlich, direkt und mit Freude an guten Ideen.</figcaption>
       </figure>
@@ -250,8 +199,13 @@ function renderFooter() {
   const footer = document.querySelector('footer');
   if (!footer) return;
   footer.innerHTML = `
+    <div class="gold-dust" aria-hidden="true">${Array.from({ length: 22 }, (_, index) => `<span style="--i:${index};--x:${(index * 47) % 100};--size:${3 + (index % 3) * 2}px;--drift:${(index % 5) * 7 - 14}px"></span>`).join('')}</div>
     <img class="site-footer-logo" src="assets/logos/lametta/Anzeit_Wort-Bildmarke_rgb_positiv.svg" alt="anzeit publishing">
     <div class="footer-copy">
+      <div class="footer-socials">
+        <a href="https://open.spotify.com/playlist/2qutKgi03L5rDq4FLyBhnq" target="_blank" rel="noopener" aria-label="LAMETTA! Weihnachtsplaylist auf Spotify öffnen"><span class="social-icon social-icon--spotify">●</span><span><strong>Christmas Playlist</strong><small>Weihnachtsmusik auf Spotify ↗</small></span></a>
+        <a href="https://www.instagram.com/lametta_xmas/" target="_blank" rel="noopener" aria-label="LAMETTA! auf Instagram öffnen"><span class="social-icon social-icon--instagram">◎</span><span><strong>Instagram</strong><small>@lametta_xmas ↗</small></span></a>
+      </div>
       <p>© anzeit publishing · LAMETTA! Christmas Gift Guide</p>
       <p>KI-Transparenz: Diese Website wurde unter redaktioneller Verantwortung von anzeit publishing mit Unterstützung KI-gestützter Werkzeuge konzipiert und umgesetzt. Inhalte, Angaben und Gestaltung wurden redaktionell geprüft.</p>
     </div>`;
