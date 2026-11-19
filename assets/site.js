@@ -54,7 +54,7 @@ function renderBrandReferences() {
     .map((brand) => `<span>${brand}</span>`)
     .join('');
   ticker.innerHTML = `
-    <div class="label">Ausgewählte Marken und Produkte in LAMETTA! 2025</div>
+    <div class="label">Ausgewählte Marken und Produkte in Lametta 2025</div>
     <div class="brandtrack">${names}</div>`;
 }
 
@@ -68,15 +68,15 @@ function renderPlacements() {
         <h2>Nicht einfach<br>platziert.<br><i>Editorial inszeniert.</i></h2>
       </div>
       <div>
-        <p>Produkte stehen bei LAMETTA! nicht in einem austauschbaren Shop-Raster. Sie werden Teil einer redaktionellen Weihnachtswelt – mit eigenem Rhythmus, überraschenden Nachbarschaften und viel Raum für ihre Geschichte.</p>
+        <p>Produkte stehen bei Lametta nicht in einem austauschbaren Shop-Raster. Sie werden Teil einer redaktionellen Weihnachtswelt – mit eigenem Rhythmus, überraschenden Nachbarschaften und viel Raum für ihre Geschichte.</p>
         <p class="placement-note">So kann eine Marke im Magazin aussehen.</p>
       </div>
     </div>
     <div class="spread-showcase">
       <figure class="spread-pair spread-pair--left">
         <div class="spread-pages">
-          <img src="assets/images/placements/lametta-2025-page-4.webp" alt="Linke Seite einer LAMETTA!-Doppelseite mit Hama und Soundcore" loading="lazy">
-          <img src="assets/images/placements/lametta-2025-page-5.webp" alt="Rechte Seite einer LAMETTA!-Doppelseite mit Mind Games, Diogenes und Sonoro" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-4.webp" alt="Linke Seite einer Lametta Doppelseite mit Hama und Soundcore" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-5.webp" alt="Rechte Seite einer Lametta Doppelseite mit Mind Games, Diogenes und Sonoro" loading="lazy">
         </div>
         <figcaption>Produkt trifft Persönlichkeit</figcaption>
       </figure>
@@ -89,8 +89,8 @@ function renderPlacements() {
       </figure>
       <figure class="spread-pair spread-pair--center">
         <div class="spread-pages">
-          <img src="assets/images/placements/lametta-2025-page-7.webp" alt="LAMETTA!-Seite 7 mit Beauty- und Lifestyle-Produkten" loading="lazy">
-          <img src="assets/images/placements/lametta-2025-page-17.jpg" alt="LAMETTA!-Seite 17 mit Sonos, Lechuza und Bosch" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-7.webp" alt="Lametta Seite 7 mit Beauty- und Lifestyle-Produkten" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-17.jpg" alt="Lametta Seite 17 mit Sonos, Lechuza und Bosch" loading="lazy">
         </div>
         <figcaption>Vielfalt redaktionell inszeniert</figcaption>
       </figure>
@@ -110,7 +110,7 @@ function renderGiveaway() {
   section.innerHTML = `
     <div class="giveaway-heading">
       <div>
-        <div class="eyebrow">LAMETTA!-Gewinnspiel 2025</div>
+        <div class="eyebrow">Lametta Gewinnspiel 2025</div>
         <h2>Große Freude.<br><i>Große Bühne.</i></h2>
       </div>
       <div class="giveaway-stat"><strong>17</strong><span>Gewinnpakete</span></div>
@@ -131,22 +131,22 @@ function renderArchive() {
   if (!archive) return;
   const cards = issues.map(([year, cover]) => `
     <article class="archive-card">
-      <button class="archive-cover" type="button" data-preview-year="${year}" aria-label="Vorschau der LAMETTA!-Ausgabe ${year} öffnen">
-      <img src="${cover}" alt="Cover der LAMETTA!-Ausgabe ${year}" loading="lazy" width="720" height="948">
+      <button class="archive-cover" type="button" data-preview-year="${year}" aria-label="Vorschau der Lametta Ausgabe ${year} öffnen">
+      <img src="${cover}" alt="Cover der Lametta Ausgabe ${year}" loading="lazy" width="720" height="948">
       </button>
-      <h3>LAMETTA! ${year}</h3>
+      <h3>Lametta ${year}</h3>
       <button class="archive-link" type="button" data-preview-year="${year}">Vorschau ansehen ↗</button>
       ${year === '2025' ? '<a class="archive-status" href="https://lametta-mag.de/lametta-2025" target="_blank" rel="noopener">Vollständiges E-Paper 2025 ↗</a>' : ''}
     </article>`).join('');
 
   archive.innerHTML = `
-    <div class="eyebrow">Das LAMETTA!-Archiv</div>
+    <div class="eyebrow">Das Lametta Archiv</div>
     <h2>Alle Ausgaben.</h2>
     <p>Die Cover dokumentieren alle bisherigen Ausgaben. Zu jedem Jahr gibt es eine ausgewählte Leseprobe im geschützten Vorschaumodus – ohne öffentlich verlinkte PDF-Datei und ohne Downloadbutton.</p>
     <div class="archive-grid">${cards}</div>
     <div class="preview-reader" role="dialog" aria-modal="true" aria-labelledby="preview-reader-title" hidden>
       <div class="preview-reader-bar">
-        <strong id="preview-reader-title">LAMETTA!-Vorschau</strong>
+        <strong id="preview-reader-title">Lametta Vorschau</strong>
         <button type="button" class="preview-reader-close" aria-label="Vorschau schließen">×</button>
       </div>
       <div class="preview-reader-pages"></div>
@@ -158,9 +158,9 @@ function renderArchive() {
   archive.querySelectorAll('[data-preview-year]').forEach((button) => {
     button.addEventListener('click', () => {
       const year = button.dataset.previewYear;
-      readerTitle.textContent = `LAMETTA! ${year} · Leseprobe`;
+      readerTitle.textContent = `Lametta ${year} · Leseprobe`;
       readerPages.innerHTML = issuePreviews[year]
-        .map((src, index) => `<img src="${src}" alt="Vorschauseite ${index + 1} der LAMETTA!-Ausgabe ${year}">`)
+        .map((src, index) => `<img src="${src}" alt="Vorschauseite ${index + 1} der Lametta Ausgabe ${year}">`)
         .join('');
       reader.hidden = false;
       document.body.classList.add('viewer-open');
@@ -181,14 +181,14 @@ function renderContact() {
       <div class="contact-copy">
         <div class="eyebrow">Let's talk</div>
         <h2>Gute Ideen<br>beginnen mit<br><i>einem Gespräch.</i></h2>
-        <p>Sie möchten Ihre Marke in der nächsten LAMETTA!-Ausgabe präsentieren? Lassen Sie uns über die passende Kooperation sprechen. Mediadaten mit Formaten, technischen Angaben und Preisen senden wir gern persönlich auf Anfrage.</p>
+        <p>Sie möchten Ihre Marke in der nächsten Lametta Ausgabe präsentieren? Lassen Sie uns über die passende Kooperation sprechen. Mediadaten mit Formaten, technischen Angaben und Preisen senden wir gern persönlich auf Anfrage.</p>
         <div class="contact-actions">
-          <a class="cta" href="mailto:hallo@lametta-mag.de?subject=Gespr%C3%A4ch%20zu%20LAMETTA!%202026">Gespräch vereinbaren ↗</a>
-          <a class="cta cta-secondary" href="mailto:hallo@lametta-mag.de?subject=Mediadaten%20LAMETTA!%202026">Mediadaten anfragen ↗</a>
+          <a class="cta" href="mailto:hallo@lametta-mag.de?subject=Gespr%C3%A4ch%20zu%20Lametta%202026">Gespräch vereinbaren ↗</a>
+          <a class="cta cta-secondary" href="mailto:hallo@lametta-mag.de?subject=Mediadaten%20Lametta%202026">Mediadaten anfragen ↗</a>
         </div>
       </div>
       <figure class="contact-portrait contact-portrait--large">
-        <img src="assets/images/optimized/contact-portrait.webp" alt="Persönliche Ansprechpartnerin für LAMETTA!" loading="lazy" width="1600" height="1067">
+        <img src="assets/images/optimized/contact-portrait.webp" alt="Persönliche Ansprechpartnerin für Lametta" loading="lazy" width="1600" height="1067">
         <figcaption>Persönlich, direkt und mit Freude an guten Ideen.</figcaption>
       </figure>
     </div>`;
@@ -200,10 +200,10 @@ function renderEpaper() {
   epaper.innerHTML = `
     <div class="epaper-inner">
       <div class="epaper-cover">
-        <img src="assets/images/covers/lametta-2025.webp" alt="Cover der LAMETTA!-Ausgabe 2025" width="1440" height="1895">
+        <img src="assets/images/covers/lametta-2025.webp" alt="Cover der Lametta Ausgabe 2025" width="1440" height="1895">
       </div>
       <div class="epaper-copy">
-        <div class="eyebrow">Ein Blick in LAMETTA!</div>
+        <div class="eyebrow">Ein Blick in Lametta</div>
         <h2>Das Magazin<br>zum Blättern.</h2>
         <p>Entdecken Sie die vollständige Ausgabe 2025 im interaktiven E-Paper – ohne Download und bequem im Browser.</p>
         <a class="cta" href="https://lametta-mag.de/lametta-2025" target="_blank" rel="noopener">E-Paper 2025 öffnen ↗</a>
@@ -223,14 +223,18 @@ function upgradeHeroCover() {
 function upgradeHeroCopy() {
   const title = document.querySelector('.herotxt h1');
   const copy = document.querySelector('.herotxt p');
+  const cta = document.querySelector('.herotxt .cta');
+  const coverClaim = document.querySelector('.cover-claim');
   if (title) title.innerHTML = 'Wo Marken zu<br><i>Weihnachtsgeschichten</i><br>werden.';
-  if (copy) copy.textContent = 'LAMETTA! bringt besondere Produkte in ein inspirierendes redaktionelles Umfeld – überraschend inszeniert, hochwertig erzählt und sichtbar über Print und E-Paper.';
+  if (copy) copy.textContent = 'Lametta bringt besondere Produkte in ein inspirierendes redaktionelles Umfeld – überraschend inszeniert, hochwertig erzählt und sichtbar über Print und E-Paper.';
+  if (cta) cta.textContent = 'Lametta entdecken ↗';
+  if (coverClaim) coverClaim.textContent = 'Geschenke und andere Besonderheiten für die Liebsten und mich.';
 }
 
 function cleanPrototypeNotes() {
   document.querySelector('#beispiele .note')?.remove();
   const factNote = document.querySelector('#fakten .note');
-  if (factNote) factNote.textContent = '* Proportionale Modellrechnung, keine separat gemessene LAMETTA!-Reichweite.';
+  if (factNote) factNote.textContent = '* Proportionale Modellrechnung, keine separat gemessene Lametta Reichweite.';
 }
 
 function renderFooter() {
@@ -241,10 +245,10 @@ function renderFooter() {
     <img class="site-footer-logo" src="assets/logos/lametta/Anzeit_Wort-Bildmarke_rgb_positiv.svg" alt="anzeit publishing">
     <div class="footer-copy">
       <div class="footer-socials">
-        <a href="https://open.spotify.com/playlist/2qutKgi03L5rDq4FLyBhnq" target="_blank" rel="noopener" aria-label="LAMETTA! Weihnachtsplaylist auf Spotify öffnen"><span class="social-icon social-icon--spotify">●</span><span><strong>Christmas Playlist</strong><small>Weihnachtsmusik auf Spotify ↗</small></span></a>
-        <a href="https://www.instagram.com/lametta_xmas/" target="_blank" rel="noopener" aria-label="LAMETTA! auf Instagram öffnen"><span class="social-icon social-icon--instagram">◎</span><span><strong>Instagram</strong><small>@lametta_xmas ↗</small></span></a>
+        <a href="https://open.spotify.com/playlist/2qutKgi03L5rDq4FLyBhnq" target="_blank" rel="noopener" aria-label="Lametta Weihnachtsplaylist auf Spotify öffnen"><span class="social-icon social-icon--spotify">●</span><span><strong>Christmas Playlist</strong><small>Weihnachtsmusik auf Spotify ↗</small></span></a>
+        <a href="https://www.instagram.com/lametta_xmas/" target="_blank" rel="noopener" aria-label="Lametta auf Instagram öffnen"><span class="social-icon social-icon--instagram">◎</span><span><strong>Instagram</strong><small>@lametta_xmas ↗</small></span></a>
       </div>
-      <p>© anzeit publishing · LAMETTA! Christmas Gift Guide</p>
+      <p>© anzeit publishing · Lametta Christmas Gift Guide</p>
       <p>KI-Transparenz: Diese Website wurde unter redaktioneller Verantwortung von anzeit publishing mit Unterstützung KI-gestützter Werkzeuge konzipiert und umgesetzt. Inhalte, Angaben und Gestaltung wurden redaktionell geprüft.</p>
     </div>`;
 }

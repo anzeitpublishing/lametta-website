@@ -56,6 +56,43 @@ h2 i, h3 i, .hand-note {
   font-style: normal;
 }
 
+/* Verbindliches Typografiesystem für die markierten Bereiche. */
+.herotxt h1,
+.herotxt h1 i,
+.placement-intro h2,
+.placement-intro h2 i {
+  font-family: 'the-seasons', 'minion-pro', Georgia, serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -.045em;
+}
+
+.herotxt h1 {
+  font-size: clamp(36px, 4vw, 58px);
+  line-height: .98;
+}
+
+.intro h2,
+.intro h2 i,
+#fakten h2,
+#fakten h2 i,
+#gewinnspiel h2,
+#gewinnspiel h2 i,
+.contact-copy h2,
+.contact-copy h2 i {
+  font-family: 'futura-pt', 'Futura PT', Futura, Arial, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -.04em;
+}
+
+#fakten .facts,
+#fakten .fact strong,
+#fakten .fact span,
+#fakten .note {
+  font-family: 'futura-pt', 'Futura PT', Futura, Arial, sans-serif !important;
+}
+
+#fakten .fact strong { font-weight: 500; }
+
 .eyebrow {
   text-transform: none !important;
   letter-spacing: .07em !important;
@@ -751,7 +788,7 @@ footer > *:not(.gold-dust) { position: relative; z-index: 2; }
   .spread-pair { width: 82vw; }
   .spread-pair--right { top: 45vw; right: -3vw; }
   .spread-pair--center { top: 92vw; left: 3vw; }
-  .herotxt h1 { font-size: clamp(36px, 6.5vw, 48px); }
+  .herotxt h1 { font-size: clamp(34px, 7.2vw, 43px); }
   .heroart img { max-width: min(78%, 440px) !important; }
   .placement-intro { grid-template-columns: 1fr; }
   .placement-collage { grid-template-columns: 1fr 1fr; }
