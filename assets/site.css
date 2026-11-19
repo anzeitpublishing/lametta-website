@@ -67,8 +67,80 @@ h2 i, h3 i, .hand-note {
 }
 
 .herotxt h1 {
-  font-size: clamp(36px, 4vw, 58px);
+  font-size: clamp(34px, 3.15vw, 50px);
   line-height: .98;
+}
+
+@media (min-width: 901px) {
+  .hero { grid-template-columns: minmax(0, 1.08fr) minmax(380px, .92fr); }
+  .herotxt { padding-right: 5%; padding-left: 9%; }
+}
+
+.hero-cover-link {
+  position: relative;
+  display: block;
+  width: min(68%, 520px);
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero-cover-link .hero-epaper-cta {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 11px 15px;
+  background: var(--red);
+  color: #fff;
+  font-family: 'futura-pt', 'Futura PT', Futura, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.hero-cover-link img {
+  width: 100% !important;
+  max-width: none !important;
+  transition: transform .25s ease;
+}
+
+.hero-cover-link:hover img,
+.hero-cover-link:focus-visible img { transform: rotate(-1deg) scale(1.015); }
+
+.hero-cover-link:focus-visible { outline: 3px solid var(--red); outline-offset: 5px; }
+
+.hero-quick-facts {
+  width: min(82%, 610px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 18px;
+  background: #34181c2b;
+}
+
+.hero-quick-facts > div {
+  padding: 14px 16px;
+  background: #f8f3ef;
+}
+
+.hero-quick-facts strong,
+.hero-quick-facts span {
+  display: block;
+  font-family: 'futura-pt', 'Futura PT', Futura, Arial, sans-serif;
+}
+
+.hero-quick-facts strong {
+  color: var(--red);
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.hero-quick-facts span {
+  margin-top: 6px;
+  font-size: 13px;
+  letter-spacing: .045em;
+  line-height: 1.25;
 }
 
 .intro h2,
@@ -96,7 +168,19 @@ h2 i, h3 i, .hand-note {
 .eyebrow {
   text-transform: none !important;
   letter-spacing: .07em !important;
-  font-size: 13px !important;
+  font-size: clamp(14px, 1.15vw, 17px) !important;
+}
+
+/* Lesbare Proportion zwischen Überschriften und begleitenden Texten. */
+.herotxt p,
+.intro p,
+.placement-intro p:not(.hand-note),
+.giveaway-lead,
+.epaper-copy > p:not(.epaper-note),
+.contact-copy > p,
+#archiv > p {
+  font-size: clamp(19px, 1.65vw, 24px) !important;
+  line-height: 1.55 !important;
 }
 
 #beispiele { background: var(--mist) !important; }
@@ -172,7 +256,7 @@ h2 i, h3 i, .hand-note {
 .spread-pair figcaption {
   margin-top: 14px;
   font-family: 'futura-pt', Arial, sans-serif;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -203,7 +287,7 @@ h2 i, h3 i, .hand-note {
 .placement-card figcaption {
   margin: 18px 0 0 8px;
   font-family: 'futura-pt', Arial, sans-serif;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -229,7 +313,7 @@ h2 i, h3 i, .hand-note {
   line-height: .93;
 }
 
-.placement-formats-copy p { font-size: clamp(16px, 1.6vw, 20px); }
+.placement-formats-copy p { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.55; }
 
 .placement-format { margin: 0; }
 .placement-carousel {
@@ -258,7 +342,7 @@ h2 i, h3 i, .hand-note {
 .placement-format figcaption {
   margin-top: 16px;
   font-family: 'futura-pt', Arial, sans-serif;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -314,7 +398,7 @@ h2 i, h3 i, .hand-note {
 .product-caption span,
 .product-caption strong { display: block; }
 
-.product-caption span { font: 500 9px 'futura-pt', Arial, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+.product-caption span { font: 500 13px 'futura-pt', Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
 .product-caption strong { margin-top: 3px; font: 400 20px 'the-seasons', Georgia, serif; }
 
 .product-dots {
@@ -403,7 +487,7 @@ h2 i, h3 i, .hand-note {
 .prize-card span,
 .prize-brand {
   font-family: 'futura-pt', Arial, sans-serif;
-  font-size: 10px;
+  font-size: 13px;
   letter-spacing: .11em;
   text-transform: uppercase;
 }
@@ -511,7 +595,7 @@ h2 i, h3 i, .hand-note {
 
 .archive-card .archive-link {
   font-family: 'futura-pt', Arial, sans-serif;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -535,7 +619,7 @@ h2 i, h3 i, .hand-note {
 
 .archive-status {
   font-family: 'futura-pt', Arial, sans-serif;
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.45;
   letter-spacing: .09em;
   text-transform: uppercase;
@@ -740,7 +824,7 @@ footer > *:not(.gold-dust) { position: relative; z-index: 2; }
 .footer-socials strong,
 .footer-socials small { display: block; font-family: 'futura-pt', Arial, sans-serif; }
 .footer-socials strong { font-size: 14px; }
-.footer-socials small { margin-top: 2px; font-size: 10px; letter-spacing: .04em; }
+.footer-socials small { margin-top: 2px; font-size: 13px; letter-spacing: .04em; }
 .social-icon { font-size: 30px; line-height: 1; }
 .social-icon--spotify { color: #1db954; }
 .social-icon--instagram { color: var(--red); }
@@ -770,7 +854,7 @@ footer > *:not(.gold-dust) { position: relative; z-index: 2; }
 .footer-copy p {
   margin: 0 0 8px;
   font-family: 'futura-pt', Arial, sans-serif;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.6;
   letter-spacing: .04em;
 }
@@ -788,8 +872,9 @@ footer > *:not(.gold-dust) { position: relative; z-index: 2; }
   .spread-pair { width: 82vw; }
   .spread-pair--right { top: 45vw; right: -3vw; }
   .spread-pair--center { top: 92vw; left: 3vw; }
-  .herotxt h1 { font-size: clamp(34px, 7.2vw, 43px); }
-  .heroart img { max-width: min(78%, 440px) !important; }
+  .herotxt h1 { font-size: clamp(32px, 7vw, 40px); }
+  .hero-cover-link { width: min(78%, 440px); }
+  .hero-quick-facts { width: min(88%, 520px); }
   .placement-intro { grid-template-columns: 1fr; }
   .placement-collage { grid-template-columns: 1fr 1fr; }
   .placement-card--offset { margin-top: 16vw; }
@@ -819,6 +904,7 @@ footer > *:not(.gold-dust) { position: relative; z-index: 2; }
 }
 
 @media (max-width: 430px) {
+  .hero-quick-facts { grid-template-columns: 1fr; }
   .spread-showcase { min-height: 170vw; }
   .spread-pair { width: 88vw; }
   .spread-pair--right { top: 53vw; }
@@ -827,7 +913,7 @@ footer > *:not(.gold-dust) { position: relative; z-index: 2; }
   .placement-formats-copy { grid-column: auto; }
   .issue-viewer { inset: 6px; }
   .archive-grid { gap: 24px 12px; }
-  .archive-card .archive-link { font-size: 9px; }
+  .archive-card .archive-link { font-size: 13px; }
 }
 
 @media (max-width: 600px) {

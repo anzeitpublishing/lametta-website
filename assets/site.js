@@ -218,6 +218,28 @@ function upgradeHeroCover() {
   cover.src = 'assets/images/covers/lametta-2025.webp';
   cover.width = 1440;
   cover.height = 1895;
+  cover.alt = 'Cover der Lametta Ausgabe 2025 – E-Paper öffnen';
+
+  const heroArt = cover.closest('.heroart');
+  if (!heroArt || heroArt.querySelector('.hero-cover-link')) return;
+
+  const coverLink = document.createElement('a');
+  coverLink.className = 'hero-cover-link';
+  coverLink.href = 'https://lametta-mag.de/lametta-2025';
+  coverLink.target = '_blank';
+  coverLink.rel = 'noopener';
+  coverLink.setAttribute('aria-label', 'E-Paper der Lametta Ausgabe 2025 öffnen');
+  cover.parentNode.insertBefore(coverLink, cover);
+  coverLink.appendChild(cover);
+  coverLink.insertAdjacentHTML('beforeend', '<span class="hero-epaper-cta">E-Paper öffnen</span>');
+
+  const facts = document.createElement('div');
+  facts.className = 'hero-quick-facts';
+  facts.setAttribute('aria-label', 'Auflage und Reichweite');
+  facts.innerHTML = `
+    <div><strong>127.428</strong><span>STERN-Abonnements</span></div>
+    <div><strong>ca. 1,32 Mio.</strong><span>potenzielles Lesepublikum</span></div>`;
+  coverLink.insertAdjacentElement('afterend', facts);
 }
 
 function upgradeHeroCopy() {
