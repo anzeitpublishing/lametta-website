@@ -30,13 +30,13 @@ const productSpotlights = [
 ];
 
 const archiveProductGallery = [
-  ['Sonoro', 'Prestige', 'assets/images/archive-previews/2018-04.jpg', '31%', '24%', '2.45'],
-  ['Dyson', 'V11 Absolute', 'assets/images/archive-previews/2019-04.jpg', '7%', '25%', '2.35'],
-  ['Ultimate Ears', 'BOOM 3', 'assets/images/archive-previews/2020-04.jpg', '91%', '31%', '2.35'],
-  ['Sonoro', 'MEISTERSTÜCK', 'assets/images/archive-previews/2021-04.jpg', '83%', '82%', '2.25'],
-  ['Tchibo', 'Retro-Plattenspieler', 'assets/images/archive-previews/2022-04.jpg', '91%', '27%', '2.4'],
-  ['Samsung', 'Galaxy Z Fold5', 'assets/images/archive-previews/2023-05.jpg', '29%', '17%', '2.25'],
-  ['Anker', 'MagGo Powerbank', 'assets/images/archive-previews/2024-05.jpg', '77%', '16%', '2.2'],
+  ['Sonoro', 'Prestige', 'assets/images/archive-previews/2018-04.jpg', '31%', '24%', '3.45'],
+  ['Dyson', 'V11 Absolute', 'assets/images/archive-previews/2019-04.jpg', '7%', '25%', '3.35'],
+  ['Ultimate Ears', 'BOOM 3', 'assets/images/archive-previews/2020-04.jpg', '91%', '31%', '3.3'],
+  ['Sonoro', 'MEISTERSTÜCK', 'assets/images/archive-previews/2021-04.jpg', '83%', '82%', '3.1'],
+  ['Tchibo', 'Retro-Plattenspieler', 'assets/images/archive-previews/2022-04.jpg', '91%', '27%', '3.4'],
+  ['Samsung', 'Galaxy Z Fold5', 'assets/images/archive-previews/2023-05.jpg', '29%', '17%', '3.1'],
+  ['Anker', 'MagGo Powerbank', 'assets/images/archive-previews/2024-05.jpg', '77%', '16%', '3.05'],
   ['Sonos', 'Beam Gen 2', 'assets/images/products/sonos-beam-cutout.png', '50%', '50%', '1']
 ];
 
