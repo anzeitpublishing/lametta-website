@@ -171,6 +171,20 @@ h2 i, h3 i, .hand-note {
   font-size: clamp(14px, 1.15vw, 17px) !important;
 }
 
+.brandtrack span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.brandtrack small {
+  font-family: 'futura-pt', 'Futura PT', Futura, Arial, sans-serif;
+  font-size: .55em;
+  font-weight: 400;
+  letter-spacing: .08em;
+  opacity: .58;
+}
+
 /* Lesbare Proportion zwischen Überschriften und begleitenden Texten. */
 .herotxt p,
 .intro p,

@@ -29,11 +29,38 @@ const productSpotlights = [
   ['Playmobil', 'Sky Trails', 'assets/images/products/playmobil-sky-trails.png']
 ];
 
-const featuredBrands = [
-  'Hama', 'Soundcore', 'Mind Games', 'Diogenes', 'Sonoro', 'Trinny London',
-  'Thoma Naturkosmetik', 'Feiler', 'Mampe', 'Bosch', 'De’Longhi', 'Brandgut',
-  'Sonos', 'Louis Poulsen', 'Lechuza', 'Playmobil', 'Zuru', 'Ulbrich Spiele',
-  'Carrera', 'Benecos', 'Tolino', 'Ravensburger'
+const archiveProducts = [
+  ['2018', 'Sonoro', 'Prestige'],
+  ['2018', 'Samsung', 'Portable SSD T5'],
+  ['2018', 'Samsung', 'Monitor UJ590'],
+  ['2019', 'Dyson', 'V11 Absolute'],
+  ['2019', 'Villeroy & Boch', 'Manufacture Rock'],
+  ['2019', 'Tchibo', 'Esperto Caffè'],
+  ['2020', 'Lechuza', 'CUBE Glossy 14'],
+  ['2020', 'Ultimate Ears', 'BOOM 3'],
+  ['2020', 'Und Gretel', 'Zinnemin & Reine'],
+  ['2021', 'ECOLED', 'Flamingo Terra'],
+  ['2021', 'J.F. Schwarzlose Berlin', 'Fougair'],
+  ['2021', 'Sonoro', 'MEISTERSTÜCK'],
+  ['2022', 'Tchibo', 'Retro-Plattenspieler'],
+  ['2022', 'Paul John', 'XO Brandy'],
+  ['2022', 'dōTERRA', 'Home Essentials Kit'],
+  ['2022', 'Verso', 'Super Elixir'],
+  ['2023', 'Sonos', 'Move 2'],
+  ['2023', 'Samsung', 'Galaxy Z Fold5'],
+  ['2023', 'Samsung', 'Portable SSD T7 Shield'],
+  ['2023', 'Eufy', 'Clean X8 Pro'],
+  ['2023', 'Ravensburger', 'GraviTrax Junior Starter-Set L'],
+  ['2024', 'Sospiro', 'Dolce Sonata'],
+  ['2024', 'Anker', 'MagGo Powerbank'],
+  ['2024', 'Soundcore', 'Space One Pro'],
+  ['2024', 'Sonoro', 'MEISTERSTÜCK Gen. 2'],
+  ['2025', 'Hama', 'Smartwatch 8900'],
+  ['2025', 'Sonos', 'Beam Gen 2'],
+  ['2025', 'Lechuza', 'CANTO Stone Set'],
+  ['2025', 'De’Longhi', 'La Specialista Touch'],
+  ['2025', 'Carrera', 'Hybrid Devil Drivers'],
+  ['2025', 'Playmobil', 'Sky Trails Starter Kit']
 ];
 
 const prizeHighlights = [
@@ -50,11 +77,11 @@ const prizeHighlights = [
 function renderBrandReferences() {
   const ticker = document.querySelector('.brandticker');
   if (!ticker) return;
-  const names = [...featuredBrands, ...featuredBrands]
-    .map((brand) => `<span>${brand}</span>`)
+  const names = [...archiveProducts, ...archiveProducts]
+    .map(([year, brand, product]) => `<span><small>${year}</small>${brand} · ${product}</span>`)
     .join('');
   ticker.innerHTML = `
-    <div class="label">Ausgewählte Marken und Produkte in Lametta 2025</div>
+    <div class="label">Ausgewählte Produkte aus acht Lametta Ausgaben</div>
     <div class="brandtrack">${names}</div>`;
 }
 
