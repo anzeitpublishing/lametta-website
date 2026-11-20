@@ -29,38 +29,15 @@ const productSpotlights = [
   ['Playmobil', 'Sky Trails', 'assets/images/products/playmobil-sky-trails.png']
 ];
 
-const archiveProducts = [
-  ['2018', 'Sonoro', 'Prestige'],
-  ['2018', 'Samsung', 'Portable SSD T5'],
-  ['2018', 'Samsung', 'Monitor UJ590'],
-  ['2019', 'Dyson', 'V11 Absolute'],
-  ['2019', 'Villeroy & Boch', 'Manufacture Rock'],
-  ['2019', 'Tchibo', 'Esperto Caffè'],
-  ['2020', 'Lechuza', 'CUBE Glossy 14'],
-  ['2020', 'Ultimate Ears', 'BOOM 3'],
-  ['2020', 'Und Gretel', 'Zinnemin & Reine'],
-  ['2021', 'ECOLED', 'Flamingo Terra'],
-  ['2021', 'J.F. Schwarzlose Berlin', 'Fougair'],
-  ['2021', 'Sonoro', 'MEISTERSTÜCK'],
-  ['2022', 'Tchibo', 'Retro-Plattenspieler'],
-  ['2022', 'Paul John', 'XO Brandy'],
-  ['2022', 'dōTERRA', 'Home Essentials Kit'],
-  ['2022', 'Verso', 'Super Elixir'],
-  ['2023', 'Sonos', 'Move 2'],
-  ['2023', 'Samsung', 'Galaxy Z Fold5'],
-  ['2023', 'Samsung', 'Portable SSD T7 Shield'],
-  ['2023', 'Eufy', 'Clean X8 Pro'],
-  ['2023', 'Ravensburger', 'GraviTrax Junior Starter-Set L'],
-  ['2024', 'Sospiro', 'Dolce Sonata'],
-  ['2024', 'Anker', 'MagGo Powerbank'],
-  ['2024', 'Soundcore', 'Space One Pro'],
-  ['2024', 'Sonoro', 'MEISTERSTÜCK Gen. 2'],
-  ['2025', 'Hama', 'Smartwatch 8900'],
-  ['2025', 'Sonos', 'Beam Gen 2'],
-  ['2025', 'Lechuza', 'CANTO Stone Set'],
-  ['2025', 'De’Longhi', 'La Specialista Touch'],
-  ['2025', 'Carrera', 'Hybrid Devil Drivers'],
-  ['2025', 'Playmobil', 'Sky Trails Starter Kit']
+const archiveProductGallery = [
+  ['Sonoro', 'Prestige', 'assets/images/archive-previews/2018-04.jpg', '31%', '24%', '2.45'],
+  ['Dyson', 'V11 Absolute', 'assets/images/archive-previews/2019-04.jpg', '7%', '25%', '2.35'],
+  ['Ultimate Ears', 'BOOM 3', 'assets/images/archive-previews/2020-04.jpg', '91%', '31%', '2.35'],
+  ['Sonoro', 'MEISTERSTÜCK', 'assets/images/archive-previews/2021-04.jpg', '83%', '82%', '2.25'],
+  ['Tchibo', 'Retro-Plattenspieler', 'assets/images/archive-previews/2022-04.jpg', '91%', '27%', '2.4'],
+  ['Samsung', 'Galaxy Z Fold5', 'assets/images/archive-previews/2023-05.jpg', '29%', '17%', '2.25'],
+  ['Anker', 'MagGo Powerbank', 'assets/images/archive-previews/2024-05.jpg', '77%', '16%', '2.2'],
+  ['Sonos', 'Beam Gen 2', 'assets/images/products/sonos-beam-cutout.png', '50%', '50%', '1']
 ];
 
 const prizeHighlights = [
@@ -77,12 +54,19 @@ const prizeHighlights = [
 function renderBrandReferences() {
   const ticker = document.querySelector('.brandticker');
   if (!ticker) return;
-  const names = [...archiveProducts, ...archiveProducts]
-    .map(([year, brand, product]) => `<span><small>${year}</small>${brand} · ${product}</span>`)
+  const products = [...archiveProductGallery, ...archiveProductGallery]
+    .map(([brand, product, image, originX, originY, zoom]) => `
+      <article class="product-ticker-card">
+        <div class="product-ticker-image" style="--origin-x:${originX};--origin-y:${originY};--zoom:${zoom}">
+          <img src="${image}" alt="${brand} ${product}" loading="lazy">
+        </div>
+        <div class="product-ticker-copy"><strong>${brand}</strong><span>${product}</span></div>
+      </article>`)
     .join('');
+  ticker.setAttribute('aria-label', 'Ausgewählte Produkte aus bisherigen Lametta Ausgaben');
   ticker.innerHTML = `
-    <div class="label">Ausgewählte Produkte aus acht Lametta Ausgaben</div>
-    <div class="brandtrack">${names}</div>`;
+    <div class="label">Produkte aus acht Lametta Ausgaben</div>
+    <div class="brandtrack">${products}</div>`;
 }
 
 function renderPlacements() {
