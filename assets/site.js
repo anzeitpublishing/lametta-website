@@ -29,15 +29,20 @@ const productSpotlights = [
   ['Playmobil', 'Sky Trails', 'assets/images/products/playmobil-sky-trails.png']
 ];
 
-const archiveProductGallery = [
-  ['Sonoro', 'Prestige', 'assets/images/archive-previews/2018-04.jpg', '31%', '24%', '3.45'],
-  ['Dyson', 'V11 Absolute', 'assets/images/archive-previews/2019-04.jpg', '7%', '25%', '3.35'],
-  ['Ultimate Ears', 'BOOM 3', 'assets/images/archive-previews/2020-04.jpg', '91%', '31%', '3.3'],
-  ['Sonoro', 'MEISTERSTÜCK', 'assets/images/archive-previews/2021-04.jpg', '83%', '82%', '3.1'],
-  ['Tchibo', 'Retro-Plattenspieler', 'assets/images/archive-previews/2022-04.jpg', '91%', '27%', '3.4'],
-  ['Samsung', 'Galaxy Z Fold5', 'assets/images/archive-previews/2023-05.jpg', '29%', '17%', '3.1'],
-  ['Anker', 'MagGo Powerbank', 'assets/images/archive-previews/2024-05.jpg', '77%', '16%', '3.05'],
-  ['Sonos', 'Beam Gen 2', 'assets/images/products/sonos-beam-cutout.png', '50%', '50%', '1']
+const archiveBrands = [
+  'Anker', 'ASMI', 'Benecos', 'Beyer & Söhne', 'Blue Microphones', 'BookBeat',
+  'Bosch', 'Brandgut', 'Carrera', 'Dallmayr', 'Davidoff', 'De’Longhi',
+  'DigitalSpecialist', 'Diogenes', 'Dyson', 'dōTERRA', 'ECOLED', 'Eufy',
+  'Everdrop', 'Faber-Castell', 'Feiler', 'Freixenet', 'Fürst Bismarck', 'Hama',
+  'i+m Naturkosmetik', 'J.F. Schwarzlose Berlin', 'Jägermeister', 'Juvia',
+  'Kirk & Sweeney', 'LDM', 'Lechuza', 'Leuchtturm1917', 'Logitech',
+  'Louis Poulsen', 'Mampe', 'MediaMarkt', 'Mey & Edlich', 'Mind Games',
+  'Muck Boot', 'Nespresso', 'Olav', 'Oral-B', 'Paul John', 'Playmobil',
+  'Rainbow Wool', 'Ravensburger', 'Remarkable Regional Malts', 'Rosenthal',
+  'Samsung', 'Seiko', 'Sky', 'Sonoro', 'Sonos', 'Sospiro', 'Soundcore',
+  'Tchibo', 'This Place', 'Thoma Naturkosmetik', 'Tolino', 'Trinny London',
+  'Ultimate Ears', 'Ulbrich Spiele', 'Und Gretel', 'Urban Sports Club',
+  'Verso', 'Villeroy & Boch', 'Weleda', 'Zuru'
 ];
 
 const prizeHighlights = [
@@ -54,19 +59,13 @@ const prizeHighlights = [
 function renderBrandReferences() {
   const ticker = document.querySelector('.brandticker');
   if (!ticker) return;
-  const products = [...archiveProductGallery, ...archiveProductGallery]
-    .map(([brand, product, image, originX, originY, zoom]) => `
-      <article class="product-ticker-card">
-        <div class="product-ticker-image" style="--origin-x:${originX};--origin-y:${originY};--zoom:${zoom}">
-          <img src="${image}" alt="${brand} ${product}" loading="lazy">
-        </div>
-        <div class="product-ticker-copy"><strong>${brand}</strong><span>${product}</span></div>
-      </article>`)
+  const brands = [...archiveBrands, ...archiveBrands]
+    .map((brand) => `<span>${brand}</span>`)
     .join('');
-  ticker.setAttribute('aria-label', 'Ausgewählte Produkte aus bisherigen Lametta Ausgaben');
+  ticker.setAttribute('aria-label', 'Marken aus allen bisherigen Lametta Ausgaben');
   ticker.innerHTML = `
-    <div class="label">Produkte aus acht Lametta Ausgaben</div>
-    <div class="brandtrack">${products}</div>`;
+    <div class="label">Marken aus allen Lametta Ausgaben</div>
+    <div class="brandtrack">${brands}</div>`;
 }
 
 function renderPlacements() {
@@ -248,8 +247,8 @@ function upgradeHeroCover() {
   facts.className = 'hero-quick-facts';
   facts.setAttribute('aria-label', 'Auflage und Reichweite');
   facts.innerHTML = `
-    <div><strong>127.428</strong><span>STERN-Abonnements</span></div>
-    <div><strong>ca. 1,32 Mio.</strong><span>potenzielles Lesepublikum</span></div>`;
+    <div><strong>bis zu 100.000</strong><span>Exemplare</span></div>
+    <div><strong>ca. 1,04 Mio.</strong><span>potenzielles Lesepublikum*</span></div>`;
   coverLink.insertAdjacentElement('afterend', facts);
 }
 
@@ -266,8 +265,17 @@ function upgradeHeroCopy() {
 
 function cleanPrototypeNotes() {
   document.querySelector('#beispiele .note')?.remove();
+  const facts = document.querySelectorAll('#fakten .fact');
+  if (facts[0]) {
+    facts[0].querySelector('strong').textContent = 'bis zu 100.000';
+    facts[0].querySelector('span').textContent = 'Auflage';
+  }
+  if (facts[1]) {
+    facts[1].querySelector('strong').textContent = 'ca. 1,04 Mio.';
+    facts[1].querySelector('span').textContent = 'Rechnerisches potenzielles Lesepublikum*';
+  }
   const factNote = document.querySelector('#fakten .note');
-  if (factNote) factNote.textContent = '* Proportionale Modellrechnung, keine separat gemessene Lametta Reichweite.';
+  if (factNote) factNote.textContent = '* Proportionale Modellrechnung auf Basis einer Auflage von bis zu 100.000 Exemplaren; keine separat gemessene Lametta Reichweite.';
 }
 
 function renderFooter() {
