@@ -30,15 +30,14 @@ const productSpotlights = [
 ];
 
 const archiveBrands = [
-  'Anker', 'ASMI', 'Benecos', 'Beyer & Söhne', 'Blue Microphones', 'BookBeat',
-  'Bosch', 'Brandgut', 'Carrera', 'Dallmayr', 'Davidoff', 'De’Longhi',
-  'DigitalSpecialist', 'Diogenes', 'Dyson', 'dōTERRA', 'ECOLED', 'Eufy',
+  'Anker', 'Benecos', 'Beyer & Söhne', 'BookBeat', 'Bosch', 'Brandgut',
+  'Carrera', 'De’Longhi', 'DigitalSpecialist', 'Diogenes', 'Dyson', 'dōTERRA', 'Eufy',
   'Everdrop', 'Faber-Castell', 'Feiler', 'Freixenet', 'Fürst Bismarck', 'Hama',
   'i+m Naturkosmetik', 'J.F. Schwarzlose Berlin', 'Jägermeister', 'Juvia',
-  'Kirk & Sweeney', 'LDM', 'Lechuza', 'Leuchtturm1917', 'Logitech',
+  'LDM', 'Lechuza', 'Leuchtturm1917', 'Logitech',
   'Louis Poulsen', 'Mampe', 'MediaMarkt', 'Mey & Edlich', 'Mind Games',
-  'Muck Boot', 'Nespresso', 'Olav', 'Oral-B', 'Paul John', 'Playmobil',
-  'Rainbow Wool', 'Ravensburger', 'Remarkable Regional Malts', 'Rosenthal',
+  'Modulor', 'Motorola', 'Muck Boot', 'Nespresso', 'Oral-B', 'Playmobil',
+  'Ravensburger', 'Remarkable Regional Malts', 'Rosenthal',
   'Samsung', 'Seiko', 'Sky', 'Sonoro', 'Sonos', 'Sospiro', 'Soundcore',
   'Tchibo', 'This Place', 'Thoma Naturkosmetik', 'Tolino', 'Trinny London',
   'Ultimate Ears', 'Ulbrich Spiele', 'Und Gretel', 'Urban Sports Club',
