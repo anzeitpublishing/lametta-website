@@ -525,7 +525,7 @@ h2 i, h3 i, .hand-note {
   display: flex;
   gap: 18px;
   width: max-content;
-  animation: prize-scroll 44s linear infinite;
+  animation: prize-scroll 88s linear infinite;
 }
 
 .prize-window:hover .prize-track { animation-play-state: paused; }
@@ -553,6 +553,24 @@ h2 i, h3 i, .hand-note {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+.prize-image--crop {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+.prize-image--crop img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  transform: scale(var(--zoom));
+  transform-origin: var(--origin-x) var(--origin-y);
 }
 
 .prize-card strong {
@@ -944,7 +962,7 @@ footer > *:not(.gold-dust) { position: relative; z-index: 2; }
   .product-float,
   .prize-track { animation: none; }
   .prize-track { flex-wrap: wrap; width: auto; padding-inline: 7vw; }
-  .prize-track .prize-card:nth-child(n+9) { display: none; }
+  .prize-track .prize-card:nth-child(n+18) { display: none; }
   .archive-card img { transition: none; }
   .gold-dust span { animation: none; display: none; }
 }

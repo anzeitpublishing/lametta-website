@@ -46,13 +46,22 @@ const archiveBrands = [
 
 const prizeHighlights = [
   ['De’Longhi', 'La Specialista Touch', '850 €', 'assets/images/products/delonghi-la-specialista.png'],
-  ['Eufy', 'Rasenmähroboter E15', '1.500 €', 'assets/images/products/eufy-e15.png'],
   ['Sonos', 'Beam Gen 2', '500 €', 'assets/images/products/sonos-beam-cutout.png'],
+  ['Louis Poulsen', 'Panthella 250 Portable', '365 €', 'assets/images/products/Panthella-250-Portable-Lamp-Opaque-Burgundy-Off.jpg'],
+  ['Eufy', 'Rasenmähroboter E15', '1.500 €', 'assets/images/products/eufy-e15.png'],
+  ['Sonoro', 'STREAM', '270 €', 'assets/images/products/sonoro-stream.png'],
   ['Lechuza', 'CANTO Stone Set', '240 €', 'assets/images/products/lechuza-canto.png'],
+  ['Modulor', 'Tischgestell X', '255 €', 'assets/images/products/modulor-table.png'],
+  ['Tolino', 'Vision Color', '200 €', 'assets/images/products/white_vision-color_Splash_Rechts_Buecher (1).png'],
+  ['Feiler', 'WILD LEO Set', '300 €', 'assets/images/products/feiler-set-raffle.png'],
+  ['Muck Boot', 'Arctic Ice Vibram', '270 €', 'assets/images/products/muck-boot-arctic-ice.png'],
   ['Hama', 'Smartwatch 8900', '150 €', 'assets/images/products/hama-smartwatch-8900.png'],
-  ['Carrera', 'Hybrid Devil Drivers', '300 €', 'assets/images/products/carrera-hybrid-set.png'],
+  ['Vetain', 'Vegan Protein Spekulatius Set', '80 €', 'assets/images/placements/lametta-2025-page-22.webp', 'prize-image--crop', '--zoom:4.2;--origin-x:70%;--origin-y:41%'],
+  ['Thoma Naturkosmetik', 'Serum mit Ceramiden', 'je 30 €', 'assets/images/products/thoma-serum.png'],
   ['Playmobil', 'Sky Trails Starter Kit', 'je 80 €', 'assets/images/products/playmobil-sky-trails.png'],
-  ['Muck Boot', 'Arctic Ice Vibram', '270 €', 'assets/images/products/muck-boot-arctic-ice.png']
+  ['Ravensburger', 'Wer stiehlt mir die Show?', '35 €', 'assets/images/products/Wer-stiehlt-mir-die-Show_Freisteller.jpg'],
+  ['Zuru', 'Hug-A-Lumps', 'je 20 €', 'assets/images/placements/lametta-2025-page-23.webp', 'prize-image--crop', '--zoom:3.8;--origin-x:10%;--origin-y:10%'],
+  ['Carrera', 'Hybrid Devil Drivers', '300 €', 'assets/images/products/carrera-hybrid-set.png']
 ];
 
 function renderBrandReferences() {
@@ -109,9 +118,9 @@ function renderPlacements() {
 function renderGiveaway() {
   const section = document.querySelector('#gewinnspiel');
   if (!section) return;
-  const cards = prizeHighlights.map(([brand, product, value, image]) => `
+  const cards = prizeHighlights.map(([brand, product, value, image, imageClass = '', imageStyle = '']) => `
     <article class="prize-card">
-      <div class="prize-image"><img src="${image}" alt="${brand} ${product}" loading="lazy"></div>
+      <div class="prize-image ${imageClass}" style="${imageStyle}"><img src="${image}" alt="${brand} ${product}" loading="lazy"></div>
       <div class="prize-brand">${brand}</div>
       <strong>${product}</strong>
       <span>Wert: ${value}</span>
