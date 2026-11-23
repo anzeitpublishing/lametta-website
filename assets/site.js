@@ -139,7 +139,7 @@ function renderGiveaway() {
       <div class="prize-track">${cards}${cards}</div>
     </div>
     <div class="giveaway-bottom">
-      <p class="hand-note">Eine Auswahl der Preise aus 2025.</p>
+      <p class="hand-note">Alle 17 Preise aus 2025.</p>
       <a class="cta" href="#kontakt">Gewinnspiel-Kooperation besprechen ↗</a>
     </div>`;
 }
@@ -274,13 +274,13 @@ function upgradeHeroCopy() {
 function cleanPrototypeNotes() {
   document.querySelector('#beispiele .note')?.remove();
   const facts = document.querySelectorAll('#fakten .fact');
-  if (facts[0]) {
-    facts[0].querySelector('strong').textContent = 'bis zu 100.000';
-    facts[0].querySelector('span').textContent = 'Auflage';
-  }
   if (facts[1]) {
-    facts[1].querySelector('strong').textContent = 'ca. 1,04 Mio.';
-    facts[1].querySelector('span').textContent = 'Rechnerisches potenzielles Lesepublikum*';
+    facts[1].querySelector('strong').textContent = 'bis zu 100.000';
+    facts[1].querySelector('span').textContent = 'Auflage';
+  }
+  if (facts[2]) {
+    facts[2].querySelector('strong').textContent = 'ca. 1,04 Mio.';
+    facts[2].querySelector('span').textContent = 'Rechnerisches potenzielles Lesepublikum*';
   }
   const factNote = document.querySelector('#fakten .note');
   if (factNote) factNote.textContent = '* Proportionale Modellrechnung auf Basis einer Auflage von bis zu 100.000 Exemplaren; keine separat gemessene Lametta Reichweite.';
