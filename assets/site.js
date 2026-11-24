@@ -1,12 +1,12 @@
 const issues = [
-  ['2025', 'assets/images/covers/lametta-2025.webp', 'https://lametta-mag.de/lametta-2025'],
-  ['2024', 'assets/images/covers/lametta-2024.webp', 'assets/documents/2024_ANZ_Lametta_RZ_digital_150dpi_ES_optimiert_e.pdf'],
-  ['2023', 'assets/images/covers/lametta-2023.webp', 'assets/documents/ePaper_Lametta_23_Einzelseiten_korr.pdf'],
-  ['2022', 'assets/images/covers/lametta-2022.webp', 'assets/documents/ANZ_Lametta_2911_22_Doppelseiten_medium.pdf'],
-  ['2021', 'assets/images/covers/lametta-2021.webp', 'assets/documents/Lametta_21_DS_PDFLink.pdf'],
-  ['2020', 'assets/images/covers/lametta-2020.webp', 'assets/documents/2020_ANZ_Lametta_RZ_DS_150dpi_V4.pdf'],
-  ['2019', 'assets/images/covers/lametta-2019.webp', 'assets/documents/2019_ANZ_Lametta_RZ_DS_medium_res.pdf'],
-  ['2018', 'assets/images/covers/lametta-2018.webp', 'assets/documents/181204_ANZEIT_Lametta_final_190x250mm_print.pdf']
+  ['2025', 'assets/images/covers/lametta-2025.webp'],
+  ['2024', 'assets/images/covers/lametta-2024.webp'],
+  ['2023', 'assets/images/covers/lametta-2023.webp'],
+  ['2022', 'assets/images/covers/lametta-2022.webp'],
+  ['2021', 'assets/images/covers/lametta-2021.webp'],
+  ['2020', 'assets/images/covers/lametta-2020.webp'],
+  ['2019', 'assets/images/covers/lametta-2019.webp'],
+  ['2018', 'assets/images/covers/lametta-2018.webp']
 ];
 
 const issuePreviews = {
@@ -19,15 +19,6 @@ const issuePreviews = {
   '2019': ['assets/images/archive-previews/2019-04.jpg', 'assets/images/archive-previews/2019-05.jpg'],
   '2018': ['assets/images/archive-previews/2018-04.jpg', 'assets/images/archive-previews/2018-05.jpg']
 };
-
-const productSpotlights = [
-  ['Soundcore', 'AeroClips', 'assets/images/products/soundcore-aeroclips-cutout.png'],
-  ['Sonoro', 'AVATON', 'assets/images/products/sonoro-avaton.png'],
-  ['Hama', 'Smartwatch 8900', 'assets/images/products/hama-smartwatch-8900-cutout.png'],
-  ['Thoma Naturkosmetik', 'Serum', 'assets/images/products/thoma-serum.png'],
-  ['Lechuza', 'CANTO Stone', 'assets/images/products/lechuza-canto-cutout.png'],
-  ['Playmobil', 'Sky Trails', 'assets/images/products/playmobil-sky-trails.png']
-];
 
 const archiveBrands = [
   'Anker', 'Benecos', 'Beyer & Söhne', 'BookBeat', 'Bosch', 'Brandgut',
