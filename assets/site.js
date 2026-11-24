@@ -140,7 +140,6 @@ function renderGiveaway() {
       <div class="prize-track">${cards}${cards}</div>
     </div>
     <div class="giveaway-bottom">
-      <p class="hand-note">Preise aus 2025.</p>
       <a class="cta" href="#kontakt">Gewinnspiel-Kooperation besprechen ↗</a>
     </div>`;
 }

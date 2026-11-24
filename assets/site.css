@@ -604,7 +604,7 @@ h2 i, h3 i, .hand-note {
 .giveaway-bottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 24px;
 }
 
