@@ -128,8 +128,8 @@ function renderGiveaway() {
   section.innerHTML = `
     <div class="giveaway-heading">
       <div>
-        <div class="eyebrow">Lametta Gewinnspiel 2025</div>
-        <h2>Große Freude.<br><i>Große Bühne.</i></h2>
+        <div class="eyebrow">Lametta Gewinnspiel</div>
+        <h2>Gewinnspiel-Preise 2025</h2>
       </div>
       <div class="giveaway-stat"><strong>17</strong><span>Gewinnpakete</span></div>
       <div class="giveaway-stat"><strong>5.900 €+</strong><span>Gesamtwert</span></div>
