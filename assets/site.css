@@ -852,8 +852,9 @@ h2 i, h3 i, .hand-note {
 }
 
 .site-footer-logo {
+  display: block;
   width: min(130px, 34vw);
-  height: auto;
+  height: min(130px, 34vw);
 }
 
 .footer-logos { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
