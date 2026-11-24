@@ -31,17 +31,17 @@ const productSpotlights = [
 
 const archiveBrands = [
   'Anker', 'Benecos', 'Beyer & Söhne', 'BookBeat', 'Bosch', 'Brandgut',
-  'Carrera', 'De’Longhi', 'DigitalSpecialist', 'Diogenes', 'Dyson', 'dōTERRA', 'Eufy',
+  'Carrera', 'De’Longhi', 'DigitalSpecialist', 'Diogenes', 'Doppler Manufaktur', 'Dyson', 'dōTERRA', 'Eufy',
   'Everdrop', 'Faber-Castell', 'Feiler', 'Freixenet', 'Fürst Bismarck', 'Hama',
   'i+m Naturkosmetik', 'J.F. Schwarzlose Berlin', 'Jägermeister', 'Juvia',
   'LDM', 'Lechuza', 'Leuchtturm1917', 'Logitech',
   'Louis Poulsen', 'Mampe', 'MediaMarkt', 'Mey & Edlich', 'Mind Games',
-  'Modulor', 'Motorola', 'Muck Boot', 'Nespresso', 'Oral-B', 'Playmobil',
+  'Moleskine', 'Modulor', 'Motorola', 'Muck Boot', 'Nespresso', 'Oral-B', 'Playmobil',
   'Ravensburger', 'Remarkable Regional Malts', 'Rosenthal',
-  'Samsung', 'Seiko', 'Sky', 'Sonoro', 'Sonos', 'Sospiro', 'Soundcore',
+  'Samsung', 'Seiko', 'Sky', 'SodaStream', 'Sonoro', 'Sonos', 'Sospiro', 'Soundcore',
   'Tchibo', 'This Place', 'Thoma Naturkosmetik', 'Tolino', 'Trinny London',
   'Ultimate Ears', 'Ulbrich Spiele', 'Und Gretel', 'Urban Sports Club',
-  'Verso', 'Villeroy & Boch', 'Weleda', 'Zuru'
+  'Verso', 'Villeroy & Boch', 'Weleda', 'Werkhaus', 'Fissler', 'Zuru'
 ];
 
 const prizeHighlights = [
