@@ -56,11 +56,11 @@ const prizeHighlights = [
   ['Feiler', 'WILD LEO Set', '300 €', 'assets/images/products/feiler-set-raffle.png'],
   ['Muck Boot', 'Arctic Ice Vibram', '270 €', 'assets/images/products/muck-boot-arctic-ice.png'],
   ['Hama', 'Smartwatch 8900', '150 €', 'assets/images/products/hama-smartwatch-8900.png'],
-  ['Vetain', 'Vegan Protein Spekulatius Set', '80 €', 'assets/images/placements/lametta-2025-page-22.webp', 'prize-image--crop', '--zoom:4.2;--origin-x:70%;--origin-y:41%'],
+  ['Vetain', 'Vegan Protein Spekulatius Set', '80 €', 'assets/images/products/vetain-set-cutout.png'],
   ['Thoma Naturkosmetik', 'Serum mit Ceramiden', 'je 30 €', 'assets/images/products/thoma-serum.png'],
   ['Playmobil', 'Sky Trails Starter Kit', 'je 80 €', 'assets/images/products/playmobil-sky-trails.png'],
   ['Ravensburger', 'Wer stiehlt mir die Show?', '35 €', 'assets/images/products/Wer-stiehlt-mir-die-Show_Freisteller.jpg'],
-  ['Zuru', 'Hug-A-Lumps', 'je 20 €', 'assets/images/placements/lametta-2025-page-23.webp', 'prize-image--crop', '--zoom:3.8;--origin-x:10%;--origin-y:10%'],
+  ['Zuru', 'Hug-A-Lumps', 'je 20 €', 'assets/images/products/zuru-hug-a-lumps-cutout.png'],
   ['Carrera', 'Hybrid Devil Drivers', '300 €', 'assets/images/products/carrera-hybrid-set.png']
 ];
 
@@ -291,11 +291,14 @@ function renderFooter() {
   if (!footer) return;
   footer.innerHTML = `
     <div class="gold-dust" aria-hidden="true">${Array.from({ length: 22 }, (_, index) => `<span style="--i:${index};--x:${(index * 47) % 100};--size:${3 + (index % 3) * 2}px;--drift:${(index % 5) * 7 - 14}px"></span>`).join('')}</div>
-    <img class="site-footer-logo" src="assets/logos/lametta/Anzeit_Wort-Bildmarke_rgb_positiv.svg" alt="anzeit publishing">
+    <div class="footer-logos" aria-label="Lametta von anzeit publishing">
+      <a class="footer-lametta" href="#top" aria-label="Zurück nach oben">Lametta!</a>
+      <img class="site-footer-logo" src="assets/logos/lametta/Anzeit_Wort-Bildmarke_rgb_positiv.svg" alt="anzeit publishing">
+    </div>
     <div class="footer-copy">
       <div class="footer-socials">
-        <a href="https://open.spotify.com/playlist/2qutKgi03L5rDq4FLyBhnq" target="_blank" rel="noopener" aria-label="Lametta Weihnachtsplaylist auf Spotify öffnen"><span class="social-icon social-icon--spotify">●</span><span><strong>Christmas Playlist</strong><small>Weihnachtsmusik auf Spotify ↗</small></span></a>
-        <a href="https://www.instagram.com/lametta_xmas/" target="_blank" rel="noopener" aria-label="Lametta auf Instagram öffnen"><span class="social-icon social-icon--instagram">◎</span><span><strong>Instagram</strong><small>@lametta_xmas ↗</small></span></a>
+        <a href="https://open.spotify.com/playlist/2qutKgi03L5rDq4FLyBhnq" target="_blank" rel="noopener" aria-label="Lametta Weihnachtsplaylist auf Spotify öffnen"><svg class="social-icon social-icon--spotify" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.58 14.42a.75.75 0 0 1-1.03.25c-2.83-1.73-6.39-2.12-10.58-1.16a.75.75 0 1 1-.34-1.46c4.58-1.05 8.52-.6 11.7 1.34.35.22.46.68.25 1.03Zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.24-1.99-8.18-2.56-12.02-1.4a.94.94 0 1 1-.54-1.8c4.39-1.33 9.84-.69 13.54 1.58.44.27.58.85.31 1.31Zm.13-3.4C14.3 7.45 7.9 7.24 4.2 8.36A1.12 1.12 0 1 1 3.55 6.2c4.25-1.29 11.32-1.04 15.78 1.61a1.12 1.12 0 0 1-1.15 1.93Z"/></svg><span><strong>Christmas Playlist</strong><small>Weihnachtsmusik auf Spotify ↗</small></span></a>
+        <a href="https://www.instagram.com/lametta_xmas/" target="_blank" rel="noopener" aria-label="Lametta auf Instagram öffnen"><svg class="social-icon social-icon--instagram" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM17 5.5A1.25 1.25 0 1 1 17 8a1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg><span><strong>Instagram</strong><small>@lametta_xmas ↗</small></span></a>
       </div>
       <p>© anzeit publishing · Lametta Christmas Gift Guide</p>
       <p>KI-Transparenz: Diese Website wurde unter redaktioneller Verantwortung von anzeit publishing mit Unterstützung KI-gestützter Werkzeuge konzipiert und umgesetzt. Inhalte, Angaben und Gestaltung wurden redaktionell geprüft.</p>
