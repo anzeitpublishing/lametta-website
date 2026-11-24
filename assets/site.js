@@ -53,7 +53,7 @@ const prizeHighlights = [
   ['Lechuza', 'CANTO Stone Set', '240 €', 'assets/images/products/lechuza-canto.png'],
   ['Modulor', 'Tischgestell X', '255 €', 'assets/images/products/modulor-table.png'],
   ['Tolino', 'Vision Color', '200 €', 'assets/images/products/white_vision-color_Splash_Rechts_Buecher (1).png'],
-  ['Feiler', 'WILD LEO Set', '300 €', 'assets/images/products/feiler-set-raffle.png'],
+  ['Feiler', 'WILD LEO Set', '296 €', 'assets/images/products/feiler-set-raffle.png'],
   ['Muck Boot', 'Arctic Ice Vibram', '270 €', 'assets/images/products/muck-boot-arctic-ice.png'],
   ['Hama', 'Smartwatch 8900', '150 €', 'assets/images/products/hama-smartwatch-8900.png'],
   ['Vetain', 'Vegan Protein Spekulatius Set', '80 €', 'assets/images/products/vetain-set-cutout.png'],
@@ -132,10 +132,10 @@ function renderGiveaway() {
         <div class="eyebrow">Lametta Gewinnspiel</div>
         <h2>Gewinnspiel-Preise 2025</h2>
       </div>
-      <div class="giveaway-stat"><strong>17</strong><span>Gewinnpakete</span></div>
-      <div class="giveaway-stat"><strong>5.900 €+</strong><span>Gesamtwert</span></div>
+      <div class="giveaway-stat"><strong>27</strong><span>Gewinne</span></div>
+      <div class="giveaway-stat"><strong>rund 6.000 €</strong><span>Gesamtwert</span></div>
     </div>
-    <p class="giveaway-lead">Das Gewinnspiel verlängert die Produktinszenierung über das Magazin hinaus: mit aufmerksamkeitsstarken Preisen, E-Paper, Website, Newsletter und Social Media.</p>
+    <p class="giveaway-lead">Als zusätzlicher Mehrwert verlängert das Gewinnspiel die Produktinszenierung über das Magazin hinaus: mit E-Paper, Website, Newsletter und Social Media.</p>
     <div class="prize-window">
       <div class="prize-track">${cards}${cards}</div>
     </div>

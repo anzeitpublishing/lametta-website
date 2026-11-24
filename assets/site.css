@@ -529,29 +529,29 @@ h2 i, h3 i, .hand-note {
 }
 
 .giveaway-lead {
-  margin-top: 36px;
-  font-size: clamp(18px, 2vw, 24px);
+  margin-top: 28px;
+  font-size: clamp(16px, 1.5vw, 20px);
 }
 
 .prize-window {
   overflow: hidden;
-  margin: 38px 0 28px;
-  padding: 16px 0 28px;
+  margin: 28px 0 22px;
+  padding: 12px 0 22px;
 }
 
 .prize-track {
   display: flex;
   gap: 18px;
   width: max-content;
-  animation: prize-scroll 105s linear infinite;
+  animation: prize-scroll 82s linear infinite;
 }
 
 .prize-window:hover .prize-track { animation-play-state: paused; }
 
 .prize-card {
-  width: clamp(170px, 17vw, 230px);
-  min-height: 300px;
-  padding: 16px;
+  width: clamp(165px, 16vw, 215px);
+  min-height: 280px;
+  padding: 15px;
   flex: none;
   display: flex;
   flex-direction: column;
@@ -560,10 +560,10 @@ h2 i, h3 i, .hand-note {
 }
 
 .prize-image {
-  height: 165px;
+  height: 145px;
   display: grid;
   place-items: center;
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
 
 .prize-image img {
@@ -594,7 +594,7 @@ h2 i, h3 i, .hand-note {
 .prize-card strong {
   margin: 6px 0 12px;
   font-family: 'the-seasons', 'minion-pro', Georgia, serif;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 400;
   line-height: 1;
 }
@@ -607,6 +607,8 @@ h2 i, h3 i, .hand-note {
   justify-content: flex-end;
   gap: 24px;
 }
+
+.giveaway-bottom .cta { padding: 13px 18px; }
 
 @keyframes prize-scroll {
   to { transform: translateX(calc(-50% - 9px)); }
