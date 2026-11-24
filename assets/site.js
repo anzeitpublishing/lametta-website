@@ -31,17 +31,17 @@ const productSpotlights = [
 
 const archiveBrands = [
   'Anker', 'Benecos', 'Beyer & Söhne', 'BookBeat', 'Bosch', 'Brandgut',
-  'Carrera', 'De’Longhi', 'DigitalSpecialist', 'Diogenes', 'Doppler Manufaktur', 'Dyson', 'dōTERRA', 'Eufy',
-  'Everdrop', 'Faber-Castell', 'Feiler', 'Freixenet', 'Fürst Bismarck', 'Hama',
+  'Carrera', 'De’Longhi', 'DigitalSpecialist', 'Diogenes', 'Doppler Manufaktur', 'dōTERRA', 'Dyson',
+  'Eufy', 'Everdrop', 'Faber-Castell', 'Feiler', 'Fissler', 'Freixenet', 'Fürst Bismarck', 'Hama',
   'i+m Naturkosmetik', 'J.F. Schwarzlose Berlin', 'Jägermeister', 'Juvia',
   'LDM', 'Lechuza', 'Leuchtturm1917', 'Logitech',
   'Louis Poulsen', 'Mampe', 'MediaMarkt', 'Mey & Edlich', 'Mind Games',
   'Moleskine', 'Modulor', 'Motorola', 'Muck Boot', 'Nespresso', 'Oral-B', 'Playmobil',
-  'Ravensburger', 'Remarkable Regional Malts', 'Rosenthal',
+  'Ravensburger', 'Rosenthal',
   'Samsung', 'Seiko', 'Sky', 'SodaStream', 'Sonoro', 'Sonos', 'Sospiro', 'Soundcore',
   'Tchibo', 'This Place', 'Thoma Naturkosmetik', 'Tolino', 'Trinny London',
   'Ultimate Ears', 'Ulbrich Spiele', 'Und Gretel', 'Urban Sports Club',
-  'Verso', 'Villeroy & Boch', 'Weleda', 'Werkhaus', 'Fissler', 'Zuru'
+  'Verso', 'Villeroy & Boch', 'Weleda', 'Werkhaus', 'Zuru'
 ];
 
 const prizeHighlights = [
@@ -67,7 +67,8 @@ const prizeHighlights = [
 function renderBrandReferences() {
   const ticker = document.querySelector('.brandticker');
   if (!ticker) return;
-  const brands = [...archiveBrands, ...archiveBrands]
+  const sortedBrands = [...archiveBrands].sort((a, b) => a.localeCompare(b, 'de', { sensitivity: 'base' }));
+  const brands = [...sortedBrands, ...sortedBrands]
     .map((brand) => `<span>${brand}</span>`)
     .join('');
   ticker.setAttribute('aria-label', 'Marken aus allen bisherigen Lametta Ausgaben');
@@ -291,8 +292,7 @@ function renderFooter() {
   if (!footer) return;
   footer.innerHTML = `
     <div class="gold-dust" aria-hidden="true">${Array.from({ length: 22 }, (_, index) => `<span style="--i:${index};--x:${(index * 47) % 100};--size:${3 + (index % 3) * 2}px;--drift:${(index % 5) * 7 - 14}px"></span>`).join('')}</div>
-    <div class="footer-logos" aria-label="Lametta von anzeit publishing">
-      <a class="footer-lametta" href="#top" aria-label="Zurück nach oben">Lametta!</a>
+    <div class="footer-logos" aria-label="anzeit publishing">
       <img class="site-footer-logo" src="assets/logos/lametta/Anzeit_Wort-Bildmarke_rgb_positiv.svg" alt="anzeit publishing">
     </div>
     <div class="footer-copy">

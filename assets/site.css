@@ -76,7 +76,7 @@ h2 i, h3 i, .hand-note {
 }
 
 .herotxt h1 {
-  font-size: clamp(34px, 3.15vw, 50px);
+  font-size: clamp(44px, 4vw, 64px);
   line-height: .98;
 }
 
@@ -855,13 +855,6 @@ h2 i, h3 i, .hand-note {
 }
 
 .footer-logos { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-.footer-lametta {
-  color: #000;
-  font-family: 'homemade-apple', 'the-seasons', Georgia, serif;
-  font-size: clamp(34px, 4vw, 54px);
-  line-height: 1;
-  text-decoration: none;
-}
 
 footer { position: relative; overflow: hidden; }
 footer > *:not(.gold-dust) { position: relative; z-index: 2; }
@@ -935,7 +928,7 @@ footer > *:not(.gold-dust) { position: relative; z-index: 2; }
   .spread-pair { width: 82vw; }
   .spread-pair--right { top: 45vw; right: -3vw; }
   .spread-pair--center { top: 92vw; left: 3vw; }
-  .herotxt h1 { font-size: clamp(32px, 7vw, 40px); }
+  .herotxt h1 { font-size: clamp(38px, 9vw, 52px); }
   .hero-cover-link { width: min(78%, 440px); }
   .hero-quick-facts { width: min(88%, 520px); }
   .placement-intro { grid-template-columns: 1fr; }
