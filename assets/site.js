@@ -1,1 +1,424 @@
-m�눧��bu��g���,z�?�+^��,j�jǺ�7an{��)ߊW���_�W�n�����jG�r�^v����n�)��X�z�����7]y�yל�ע������ج�V�����,j��zn�)����^}����+��b��.�����i����^}����+��h�
+const issues = [
+  ['2025', 'assets/images/covers/lametta-2025.webp'],
+  ['2024', 'assets/images/covers/lametta-2024.webp'],
+  ['2023', 'assets/images/covers/lametta-2023.webp'],
+  ['2022', 'assets/images/covers/lametta-2022.webp'],
+  ['2021', 'assets/images/covers/lametta-2021.webp'],
+  ['2020', 'assets/images/covers/lametta-2020.webp'],
+  ['2019', 'assets/images/covers/lametta-2019.webp'],
+  ['2018', 'assets/images/covers/lametta-2018.webp']
+];
+
+const issuePreviews = {
+  '2025': ['assets/images/placements/lametta-2025-page-4.webp', 'assets/images/placements/lametta-2025-page-5.webp'],
+  '2024': ['assets/images/archive-previews/2024-04.jpg', 'assets/images/archive-previews/2024-05.jpg'],
+  '2023': ['assets/images/archive-previews/2023-04.jpg', 'assets/images/archive-previews/2023-05.jpg'],
+  '2022': ['assets/images/archive-previews/2022-04.jpg', 'assets/images/archive-previews/2022-05.jpg'],
+  '2021': ['assets/images/archive-previews/2021-04.jpg', 'assets/images/archive-previews/2021-05.jpg'],
+  '2020': ['assets/images/archive-previews/2020-04.jpg', 'assets/images/archive-previews/2020-05.jpg'],
+  '2019': ['assets/images/archive-previews/2019-04.jpg', 'assets/images/archive-previews/2019-05.jpg'],
+  '2018': ['assets/images/archive-previews/2018-04.jpg', 'assets/images/archive-previews/2018-05.jpg']
+};
+
+const archiveBrands = [
+  'Anker', 'Benecos', 'Beyer & Söhne', 'BookBeat', 'Bosch', 'Brandgut',
+  'Carrera', 'De’Longhi', 'DigitalSpecialist', 'Diogenes', 'Doppler Manufaktur', 'dōTERRA', 'Dyson',
+  'Eufy', 'Everdrop', 'Faber-Castell', 'Feiler', 'Fissler', 'Freixenet', 'Fürst Bismarck', 'Hama',
+  'i+m Naturkosmetik', 'J.F. Schwarzlose Berlin', 'Jägermeister', 'Juvia',
+  'LDM', 'Lechuza', 'Leuchtturm1917', 'Logitech',
+  'Louis Poulsen', 'Mampe', 'MediaMarkt', 'Mey & Edlich', 'Mind Games',
+  'Moleskine', 'Modulor', 'Motorola', 'Muck Boot', 'Nespresso', 'Oral-B', 'Playmobil',
+  'Ravensburger', 'Rosenthal',
+  'Samsung', 'Seiko', 'Sky', 'SodaStream', 'Sonoro', 'Sonos', 'Sospiro', 'Soundcore',
+  'Tchibo', 'This Place', 'Thoma Naturkosmetik', 'Tolino', 'Trinny London',
+  'Ultimate Ears', 'Ulbrich Spiele', 'Und Gretel', 'Urban Sports Club',
+  'Verso', 'Villeroy & Boch', 'Weleda', 'Werkhaus', 'Zuru'
+];
+
+const prizeHighlights = [
+  ['De’Longhi', 'La Specialista Touch', '850 €', 'assets/images/products/delonghi-la-specialista.png'],
+  ['Sonos', 'Beam Gen 2', '500 €', 'assets/images/products/sonos-beam-cutout.png'],
+  ['Louis Poulsen', 'Panthella 250 Portable', '365 €', 'assets/images/products/Panthella-250-Portable-Lamp-Opaque-Burgundy-Off.jpg'],
+  ['Eufy', 'Rasenmähroboter E15', '1.500 €', 'assets/images/products/eufy-e15.png'],
+  ['Sonoro', 'STREAM', '270 €', 'assets/images/products/sonoro-stream.png'],
+  ['Lechuza', 'CANTO Stone Set', '240 €', 'assets/images/products/lechuza-canto.png'],
+  ['Modulor', 'Tischgestell X', '255 €', 'assets/images/products/modulor-table.png'],
+  ['Tolino', 'Vision Color', '200 €', 'assets/images/products/white_vision-color_Splash_Rechts_Buecher (1).png'],
+  ['Feiler', 'WILD LEO Set', '296 €', 'assets/images/products/feiler-set-raffle.png'],
+  ['Muck Boot', 'Arctic Ice Vibram', '270 €', 'assets/images/products/muck-boot-arctic-ice.png'],
+  ['Hama', 'Smartwatch 8900', '150 €', 'assets/images/products/hama-smartwatch-8900.png'],
+  ['Vetain', 'Vegan Protein Spekulatius Set', '80 €', 'assets/images/products/vetain-set-cutout.png'],
+  ['Thoma Naturkosmetik', 'Serum mit Ceramiden', 'je 30 €', 'assets/images/products/thoma-serum.png'],
+  ['Playmobil', 'Sky Trails Starter Kit', 'je 80 €', 'assets/images/products/playmobil-sky-trails.png'],
+  ['Ravensburger', 'Wer stiehlt mir die Show?', '35 €', 'assets/images/products/Wer-stiehlt-mir-die-Show_Freisteller.jpg'],
+  ['Zuru', 'Hug-A-Lumps', 'je 20 €', 'assets/images/products/zuru-hug-a-lumps-cutout.png'],
+  ['Carrera', 'Hybrid Devil Drivers', '300 €', 'assets/images/products/carrera-hybrid-set.png']
+];
+
+const languageCopy = {
+  de: {
+    title: 'Lametta – Christmas Gift Guide für Marken & Agenturen', description: 'Lametta bringt besondere Produkte in ein inspirierendes redaktionelles Umfeld – sichtbar in Print und E-Paper.',
+    nav: ['Magazin', 'Zahlen & Fakten', 'Ausgaben', 'Kontakt'], heroEyebrow: 'Christmas Gift Guide · Für Marken & Agenturen', heroTitle: 'Wo Marken zu<br><i>Weihnachtsgeschichten</i><br>werden.', heroCopy: 'Lametta bringt besondere Produkte in ein inspirierendes redaktionelles Umfeld – überraschend inszeniert, hochwertig erzählt und sichtbar über Print und E-Paper.', heroCta: 'Lametta entdecken ↗', coverClaim: 'Geschenke und andere Besonderheiten für die Liebsten und mich.',
+    epaperOpen: 'E-Paper öffnen', epaperAria: 'E-Paper der Lametta Ausgabe 2025 öffnen', circulation: 'bis zu 100.000', circulationLabel: 'Exemplare', reach: 'ca. 1,04 Mio.', reachLabel: 'potenzielles Lesepublikum*', factsAria: 'Auflage und Reichweite', brandsLabel: 'Marken aus allen Lametta Ausgaben', brandsAria: 'Marken aus allen bisherigen Lametta Ausgaben',
+    introTitle: 'Eine Bühne<br>für schöne<br><i>Dinge.</i>', introEyebrow: 'Das Magazin', introCopy: 'Konkrete Geschenkideen treffen auf inspirierende Redaktion – mit Rezepten, kreativen DIY-Ideen, Charity-Projekten und einem Hauch Prominenz. Produkte werden originell eingebunden und charmant präsentiert. Dazu kommen das E-Paper und ein großes Gewinnspiel im Heft und online.',
+    placementsEyebrow: 'Echte Platzierungen · Ausgabe 2025', placementsTitle: 'Nicht einfach<br>platziert.<br><i>Editorial inszeniert.</i>', placementsCopy: 'Produkte stehen bei Lametta nicht in einem austauschbaren Shop-Raster. Sie werden Teil einer redaktionellen Weihnachtswelt – mit eigenem Rhythmus, überraschenden Nachbarschaften und viel Raum für ihre Geschichte.', placementsNote: 'So kann eine Marke im Magazin aussehen.', placementCaptions: ['Produkt trifft Persönlichkeit', 'Produkte, Genuss und Redaktion verbunden', 'Vielfalt redaktionell inszeniert'],
+    factsEyebrow: 'Lametta 2026', factsTitle: 'Zahlen &<br><i>Fakten.</i>', factValues: ['10.12.2026', 'bis zu 100.000', 'ca. 1,04 Mio.', '26.11.2026', '24.11.2026', 'STERN'], factLabels: ['Erscheinungstermin', 'Auflage', 'Rechnerisches potenzielles Lesepublikum*', 'Anzeigenschluss laut Mediadaten', 'Druckunterlagenschluss laut Mediadaten', 'Print-Beilage in der Aboauflage'], factNote: '* Proportionale Modellrechnung auf Basis einer Auflage von bis zu 100.000 Exemplaren; keine separat gemessene Lametta Reichweite.',
+    cooperationEyebrow: 'Kooperationsmöglichkeiten', cooperationTitle: 'Ihre Marke.<br>Unsere Weihnachtswelt.', cooperationLabels: ['01 / Print', '02 / Print', '03 / Kooperation'], cooperationTitles: ['Produktpräsentationen', 'Anzeigen & Advertorials', 'Gewinnspiel & Digital'], cooperationCopies: ['Produkte werden originell eingebunden und charmant präsentiert – auf Wunsch mit unverbindlicher Preisempfehlung (UVP) und URL.', 'Maßgeschneiderte Advertorials für eine vertiefte Markenpräsentation sowie klassische Anzeigenformate.', 'Ein Gewinnspiel im Heft und online sowie die digitale Ausgabe schaffen zusätzliche Sichtbarkeit.'], cooperationCta: 'Mediadaten anfordern ↗',
+    giveawayEyebrow: 'Lametta Gewinnspiel', giveawayTitle: 'Gewinnspiel-Preise 2025', wins: 'Gewinne', totalValue: 'Gesamtwert', giveawayValue: 'rund 6.000 €', giveawayCopy: 'Als zusätzlicher Mehrwert verlängert das Gewinnspiel die Produktinszenierung über das Magazin hinaus: mit E-Paper, Website, Newsletter und Social Media.', giveawayCta: 'Gewinnspiel-Kooperation besprechen ↗', valueLabel: 'Wert',
+    epaperEyebrow: 'Ein Blick in Lametta', epaperTitle: 'Das Magazin<br>zum Blättern.', epaperCopy: 'Entdecken Sie die vollständige Ausgabe 2025 im interaktiven E-Paper – ohne Download und bequem im Browser.', epaperButton: 'E-Paper 2025 öffnen ↗', epaperNote: 'Das E-Paper öffnet sich in einem neuen Tab.',
+    archiveEyebrow: 'Das Lametta Archiv', archiveTitle: 'Alle Ausgaben.', archiveCopy: 'Die Cover dokumentieren alle bisherigen Ausgaben. Zu jedem Jahr gibt es eine ausgewählte Leseprobe im geschützten Vorschaumodus – ohne öffentlich verlinkte PDF-Datei und ohne Downloadbutton.', preview: 'Vorschau ansehen ↗', fullEpaper: 'Vollständiges E-Paper 2025 ↗', previewAria: 'Vorschau der Lametta Ausgabe', reader: 'Leseprobe', close: 'Vorschau schließen', previewPage: 'Vorschauseite',
+    contactEyebrow: "Let's talk", contactTitle: 'Gute Ideen<br>beginnen mit<br><i>einem Gespräch.</i>', contactCopy: 'Sie möchten Ihre Marke in der nächsten Lametta Ausgabe präsentieren? Lassen Sie uns über die passende Kooperation sprechen. Mediadaten mit Formaten, technischen Angaben und Preisen senden wir gern persönlich auf Anfrage.', contactTalk: 'Gespräch vereinbaren ↗', contactMedia: 'Mediadaten anfragen ↗', contactCaption: 'Persönlich, direkt und mit Freude an guten Ideen.', spotify: 'Weihnachtsmusik auf Spotify ↗', transparency: 'KI-Transparenz: Diese Website wurde unter redaktioneller Verantwortung von anzeit publishing mit Unterstützung KI-gestützter Werkzeuge konzipiert und umgesetzt. Inhalte, Angaben und Gestaltung wurden redaktionell geprüft.'
+  },
+  en: {
+    title: 'Lametta – Christmas Gift Guide for brands & agencies', description: 'Lametta places distinctive products in an inspiring editorial setting – visible in print and as an e-paper.',
+    nav: ['Magazine', 'Facts & Figures', 'Editions', 'Contact'], heroEyebrow: 'Christmas Gift Guide · For brands & agencies', heroTitle: 'Where brands become<br><i>Christmas stories.</i>', heroCopy: 'Lametta places distinctive products in an inspiring editorial setting – imaginatively staged, thoughtfully told and visible in print and as an e-paper.', heroCta: 'Discover Lametta ↗', coverClaim: 'Gifts and other special finds for loved ones – and for me.',
+    epaperOpen: 'Open e-paper', epaperAria: 'Open the 2025 Lametta e-paper', circulation: 'up to 100,000', circulationLabel: 'copies', reach: 'approx. 1.04m', reachLabel: 'potential readers*', factsAria: 'Circulation and reach', brandsLabel: 'Brands featured across all Lametta editions', brandsAria: 'Brands featured across all previous Lametta editions',
+    introTitle: 'A stage for<br>beautiful<br><i>things.</i>', introEyebrow: 'The magazine', introCopy: 'Specific gift ideas meet inspiring editorial content – with recipes, creative DIY ideas, charity projects and a touch of celebrity. Products are integrated in original ways and presented with charm. The e-paper and a major giveaway in the magazine and online complete the package.',
+    placementsEyebrow: 'Real placements · 2025 edition', placementsTitle: 'Not simply placed.<br><i>Editorially staged.</i>', placementsCopy: 'At Lametta, products do not sit in an interchangeable shop grid. They become part of an editorial Christmas world – with its own rhythm, surprising neighbours and room for their story.', placementsNote: 'This is how a brand can appear in the magazine.', placementCaptions: ['Product meets personality', 'Products, enjoyment and editorial content combined', 'Variety, editorially staged'],
+    factsEyebrow: 'Lametta 2026', factsTitle: 'Facts &<br><i>Figures.</i>', factValues: ['10 Dec 2026', 'up to 100,000', 'approx. 1.04m', '26 Nov 2026', '24 Nov 2026', 'STERN'], factLabels: ['Publication date', 'Circulation', 'Estimated potential readership*', 'Advertising deadline according to media kit', 'Artwork deadline according to media kit', 'Print supplement in the subscriber edition'], factNote: '* Proportional model calculation based on a circulation of up to 100,000 copies; Lametta reach is not measured separately.',
+    cooperationEyebrow: 'Partnership opportunities', cooperationTitle: 'Your brand.<br>Our Christmas world.', cooperationLabels: ['01 / Print', '02 / Print', '03 / Partnership'], cooperationTitles: ['Product presentations', 'Advertising & advertorials', 'Giveaway & digital'], cooperationCopies: ['Products are integrated in original ways and presented with charm – including recommended retail price and URL on request.', 'Tailored advertorials for in-depth brand presentation as well as classic advertising formats.', 'A giveaway in the magazine and online, together with the digital edition, creates additional visibility.'], cooperationCta: 'Request media kit ↗',
+    giveawayEyebrow: 'Lametta giveaway', giveawayTitle: '2025 giveaway prizes', wins: 'prizes', totalValue: 'total value', giveawayValue: 'approx. €6,000', giveawayCopy: 'As an added benefit, the giveaway extends the product presentation beyond the magazine through the e-paper, website, newsletter and social media.', giveawayCta: 'Discuss a giveaway partnership ↗', valueLabel: 'Value',
+    epaperEyebrow: 'Inside Lametta', epaperTitle: 'Browse<br>the magazine.', epaperCopy: 'Explore the complete 2025 edition in our interactive e-paper – with no download and conveniently in your browser.', epaperButton: 'Open 2025 e-paper ↗', epaperNote: 'The e-paper opens in a new tab.',
+    archiveEyebrow: 'The Lametta archive', archiveTitle: 'All editions.', archiveCopy: 'The covers document every previous edition. A selected preview is available for each year in protected viewing mode – without a publicly linked PDF or download button.', preview: 'View preview ↗', fullEpaper: 'Full 2025 e-paper ↗', previewAria: 'Open preview of Lametta edition', reader: 'Preview', close: 'Close preview', previewPage: 'Preview page',
+    contactEyebrow: "Let's talk", contactTitle: 'Good ideas begin<br>with a<br><i>conversation.</i>', contactCopy: 'Would you like to present your brand in the next Lametta edition? Let us discuss the right partnership. We will gladly send you our media kit with formats, technical specifications and prices on request.', contactTalk: 'Arrange a conversation ↗', contactMedia: 'Request media kit ↗', contactCaption: 'Personal, direct and delighted by good ideas.', spotify: 'Christmas music on Spotify ↗', transparency: 'AI transparency: This website was conceived and produced under the editorial responsibility of anzeit publishing with the support of AI-assisted tools. Its content, data and design were reviewed editorially.'
+  }
+};
+
+let currentLanguage = (() => {
+  try { return localStorage.getItem('lametta-language') === 'en' ? 'en' : 'de'; }
+  catch { return 'de'; }
+})();
+
+function renderBrandReferences() {
+  const ticker = document.querySelector('.brandticker');
+  if (!ticker) return;
+  const sortedBrands = [...archiveBrands].sort((a, b) => a.localeCompare(b, 'de', { sensitivity: 'base' }));
+  const brands = [...sortedBrands, ...sortedBrands]
+    .map((brand) => `<span>${brand}</span>`)
+    .join('');
+  ticker.setAttribute('aria-label', 'Marken aus allen bisherigen Lametta Ausgaben');
+  ticker.innerHTML = `
+    <div class="label">Marken aus allen Lametta Ausgaben</div>
+    <div class="brandtrack">${brands}</div>`;
+}
+
+function renderPlacements() {
+  const section = document.querySelector('#beispiele');
+  if (!section) return;
+  section.innerHTML = `
+    <div class="placement-intro">
+      <div>
+        <div class="eyebrow">Echte Platzierungen · Ausgabe 2025</div>
+        <h2>Nicht einfach<br>platziert.<br><i>Editorial inszeniert.</i></h2>
+      </div>
+      <div>
+        <p>Produkte stehen bei Lametta nicht in einem austauschbaren Shop-Raster. Sie werden Teil einer redaktionellen Weihnachtswelt – mit eigenem Rhythmus, überraschenden Nachbarschaften und viel Raum für ihre Geschichte.</p>
+        <p class="placement-note">So kann eine Marke im Magazin aussehen.</p>
+      </div>
+    </div>
+    <div class="spread-showcase">
+      <figure class="spread-pair spread-pair--left">
+        <div class="spread-pages">
+          <img src="assets/images/placements/lametta-2025-page-4.webp" alt="Linke Seite einer Lametta Doppelseite mit Hama und Soundcore" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-5.webp" alt="Rechte Seite einer Lametta Doppelseite mit Mind Games, Diogenes und Sonoro" loading="lazy">
+        </div>
+        <figcaption>Produkt trifft Persönlichkeit</figcaption>
+      </figure>
+      <figure class="spread-pair spread-pair--right">
+        <div class="spread-pages">
+          <img src="assets/images/placements/lametta-2025-page-8.webp" alt="Linke Seite der Koch-Doppelseite mit Produkten und Rotkohl-Rouladen" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-9.jpg" alt="Rechte Seite der Koch-Doppelseite mit Küchenprodukten" loading="lazy">
+        </div>
+        <figcaption>Produkte, Genuss und Redaktion verbunden</figcaption>
+      </figure>
+      <figure class="spread-pair spread-pair--center">
+        <div class="spread-pages">
+          <img src="assets/images/placements/lametta-2025-page-7.webp" alt="Lametta Seite 7 mit Beauty- und Lifestyle-Produkten" loading="lazy">
+          <img src="assets/images/placements/lametta-2025-page-17.jpg" alt="Lametta Seite 17 mit Sonos, Lechuza und Bosch" loading="lazy">
+        </div>
+        <figcaption>Vielfalt redaktionell inszeniert</figcaption>
+      </figure>
+    </div>`;
+}
+
+function renderGiveaway() {
+  const section = document.querySelector('#gewinnspiel');
+  if (!section) return;
+  const cards = prizeHighlights.map(([brand, product, value, image, imageClass = '', imageStyle = '']) => `
+    <article class="prize-card">
+      <div class="prize-image ${imageClass}" style="${imageStyle}"><img src="${image}" alt="${brand} ${product}" loading="lazy"></div>
+      <div class="prize-brand">${brand}</div>
+      <strong>${product}</strong>
+      <span>Wert: ${value}</span>
+    </article>`).join('');
+  section.innerHTML = `
+    <div class="giveaway-heading">
+      <div>
+        <div class="eyebrow">Lametta Gewinnspiel</div>
+        <h2>Gewinnspiel-Preise 2025</h2>
+      </div>
+      <div class="giveaway-stat"><strong>27</strong><span>Gewinne</span></div>
+      <div class="giveaway-stat"><strong>rund 6.000 €</strong><span>Gesamtwert</span></div>
+    </div>
+    <p class="giveaway-lead">Als zusätzlicher Mehrwert verlängert das Gewinnspiel die Produktinszenierung über das Magazin hinaus: mit E-Paper, Website, Newsletter und Social Media.</p>
+    <div class="prize-window">
+      <div class="prize-track">${cards}${cards}</div>
+    </div>
+    <div class="giveaway-bottom">
+      <a class="cta" href="#kontakt">Gewinnspiel-Kooperation besprechen ↗</a>
+    </div>`;
+}
+
+function renderArchive() {
+  const archive = document.querySelector('#archiv');
+  if (!archive) return;
+  const cards = issues.map(([year, cover]) => `
+    <article class="archive-card">
+      <button class="archive-cover" type="button" data-preview-year="${year}" aria-label="Vorschau der Lametta Ausgabe ${year} öffnen">
+      <img src="${cover}" alt="Cover der Lametta Ausgabe ${year}" loading="lazy" width="720" height="948">
+      </button>
+      <h3>Lametta ${year}</h3>
+      <button class="archive-link" type="button" data-preview-year="${year}">Vorschau ansehen ↗</button>
+      ${year === '2025' ? '<a class="archive-status" href="https://lametta-mag.de/lametta-2025" target="_blank" rel="noopener">Vollständiges E-Paper 2025 ↗</a>' : ''}
+    </article>`).join('');
+
+  archive.innerHTML = `
+    <div class="eyebrow">Das Lametta Archiv</div>
+    <h2>Alle Ausgaben.</h2>
+    <p>Die Cover dokumentieren alle bisherigen Ausgaben. Zu jedem Jahr gibt es eine ausgewählte Leseprobe im geschützten Vorschaumodus – ohne öffentlich verlinkte PDF-Datei und ohne Downloadbutton.</p>
+    <div class="archive-grid">${cards}</div>
+    <div class="preview-reader" role="dialog" aria-modal="true" aria-labelledby="preview-reader-title" hidden>
+      <div class="preview-reader-bar">
+        <strong id="preview-reader-title">Lametta Vorschau</strong>
+        <button type="button" class="preview-reader-close" aria-label="Vorschau schließen">×</button>
+      </div>
+      <div class="preview-reader-pages"></div>
+    </div>`;
+
+  const reader = archive.querySelector('.preview-reader');
+  const readerTitle = reader.querySelector('#preview-reader-title');
+  const readerPages = reader.querySelector('.preview-reader-pages');
+  archive.querySelectorAll('[data-preview-year]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const year = button.dataset.previewYear;
+      const copy = languageCopy[currentLanguage];
+      readerTitle.textContent = `Lametta ${year} · ${copy.reader}`;
+      readerPages.innerHTML = issuePreviews[year]
+        .map((src, index) => `<img src="${src}" alt="${copy.previewPage} ${index + 1} · Lametta ${year}">`)
+        .join('');
+      reader.hidden = false;
+      document.body.classList.add('viewer-open');
+    });
+  });
+  reader.querySelector('.preview-reader-close').addEventListener('click', () => {
+    reader.hidden = true;
+    readerPages.innerHTML = '';
+    document.body.classList.remove('viewer-open');
+  });
+}
+
+function renderContact() {
+  const contact = document.querySelector('#kontakt');
+  if (!contact) return;
+  contact.innerHTML = `
+    <div class="contact-inner">
+      <div class="contact-copy">
+        <div class="eyebrow">Let's talk</div>
+        <h2>Gute Ideen<br>beginnen mit<br><i>einem Gespräch.</i></h2>
+        <p>Sie möchten Ihre Marke in der nächsten Lametta Ausgabe präsentieren? Lassen Sie uns über die passende Kooperation sprechen. Mediadaten mit Formaten, technischen Angaben und Preisen senden wir gern persönlich auf Anfrage.</p>
+        <div class="contact-actions">
+          <a class="cta" href="mailto:hallo@lametta-mag.de?subject=Gespr%C3%A4ch%20zu%20Lametta%202026">Gespräch vereinbaren ↗</a>
+          <a class="cta cta-secondary" href="mailto:hallo@lametta-mag.de?subject=Mediadaten%20Lametta%202026">Mediadaten anfragen ↗</a>
+        </div>
+      </div>
+      <figure class="contact-portrait contact-portrait--large">
+        <img src="assets/images/optimized/contact-portrait.webp" alt="Persönliche Ansprechpartnerin für Lametta" loading="lazy" width="1600" height="1067">
+        <figcaption>Persönlich, direkt und mit Freude an guten Ideen.</figcaption>
+      </figure>
+    </div>`;
+}
+
+function renderEpaper() {
+  const epaper = document.querySelector('#epaper');
+  if (!epaper) return;
+  epaper.innerHTML = `
+    <div class="epaper-inner">
+      <div class="epaper-cover">
+        <img src="assets/images/covers/lametta-2025.webp" alt="Cover der Lametta Ausgabe 2025" width="1440" height="1895">
+      </div>
+      <div class="epaper-copy">
+        <div class="eyebrow">Ein Blick in Lametta</div>
+        <h2>Das Magazin<br>zum Blättern.</h2>
+        <p>Entdecken Sie die vollständige Ausgabe 2025 im interaktiven E-Paper – ohne Download und bequem im Browser.</p>
+        <a class="cta" href="https://lametta-mag.de/lametta-2025" target="_blank" rel="noopener">E-Paper 2025 öffnen ↗</a>
+        <p class="epaper-note">Das E-Paper öffnet sich in einem neuen Tab.</p>
+      </div>
+    </div>`;
+}
+
+function upgradeHeroCover() {
+  const cover = document.querySelector('.heroart img');
+  if (!cover) return;
+  cover.src = 'assets/images/covers/lametta-2025.webp';
+  cover.width = 1440;
+  cover.height = 1895;
+  cover.alt = 'Cover der Lametta Ausgabe 2025 – E-Paper öffnen';
+
+  const heroArt = cover.closest('.heroart');
+  if (!heroArt || heroArt.querySelector('.hero-cover-link')) return;
+
+  const coverLink = document.createElement('a');
+  coverLink.className = 'hero-cover-link';
+  coverLink.href = 'https://lametta-mag.de/lametta-2025';
+  coverLink.target = '_blank';
+  coverLink.rel = 'noopener';
+  coverLink.setAttribute('aria-label', 'E-Paper der Lametta Ausgabe 2025 öffnen');
+  cover.parentNode.insertBefore(coverLink, cover);
+  coverLink.appendChild(cover);
+  coverLink.insertAdjacentHTML('beforeend', '<span class="hero-epaper-cta">E-Paper öffnen</span>');
+
+  const facts = document.createElement('div');
+  facts.className = 'hero-quick-facts';
+  facts.setAttribute('aria-label', 'Auflage und Reichweite');
+  facts.innerHTML = `
+    <div><strong>bis zu 100.000</strong><span>Exemplare</span></div>
+    <div><strong>ca. 1,04 Mio.</strong><span>potenzielles Lesepublikum*</span></div>`;
+  coverLink.insertAdjacentElement('afterend', facts);
+}
+
+function upgradeHeroCopy() {
+  const title = document.querySelector('.herotxt h1');
+  const copy = document.querySelector('.herotxt p');
+  const cta = document.querySelector('.herotxt .cta');
+  const coverClaim = document.querySelector('.cover-claim');
+  if (title) title.innerHTML = 'Wo Marken zu<br><i>Weihnachtsgeschichten</i><br>werden.';
+  if (copy) copy.textContent = 'Lametta bringt besondere Produkte in ein inspirierendes redaktionelles Umfeld – überraschend inszeniert, hochwertig erzählt und sichtbar über Print und E-Paper.';
+  if (cta) cta.textContent = 'Lametta entdecken ↗';
+  if (coverClaim) coverClaim.textContent = 'Geschenke und andere Besonderheiten für die Liebsten und mich.';
+}
+
+function cleanPrototypeNotes() {
+  document.querySelector('#beispiele .note')?.remove();
+  const facts = document.querySelectorAll('#fakten .fact');
+  if (facts[1]) {
+    facts[1].querySelector('strong').textContent = 'bis zu 100.000';
+    facts[1].querySelector('span').textContent = 'Auflage';
+  }
+  if (facts[2]) {
+    facts[2].querySelector('strong').textContent = 'ca. 1,04 Mio.';
+    facts[2].querySelector('span').textContent = 'Rechnerisches potenzielles Lesepublikum*';
+  }
+  const factNote = document.querySelector('#fakten .note');
+  if (factNote) factNote.textContent = '* Proportionale Modellrechnung auf Basis einer Auflage von bis zu 100.000 Exemplaren; keine separat gemessene Lametta Reichweite.';
+}
+
+function renderFooter() {
+  const footer = document.querySelector('footer');
+  if (!footer) return;
+  footer.innerHTML = `
+    <div class="gold-dust" aria-hidden="true">${Array.from({ length: 22 }, (_, index) => `<span style="--i:${index};--x:${(index * 47) % 100};--size:${3 + (index % 3) * 2}px;--drift:${(index % 5) * 7 - 14}px"></span>`).join('')}</div>
+    <div class="footer-logos" aria-label="anzeit publishing">
+      <svg class="site-footer-logo" role="img" aria-label="anzeit publishing" viewBox="0 0 309.15 305.16"><defs><style>.cls-1{fill:#1d1d1b;}</style></defs><path class="cls-1" d="M32.37,152.41c0-67.29,54.74-122.03,122.03-122.03,22.27,0,44.07,6.06,63.04,17.53l.92-1.51c-19.25-11.64-41.36-17.79-63.96-17.79-68.27,0-123.8,55.54-123.8,123.8,0,37.45,16.7,72.49,45.83,96.14l1.12-1.37c-28.71-23.31-45.17-57.85-45.17-94.77Z"/><path class="cls-1" d="M232.39,56.27l-1.12,1.37c28.71,23.31,45.17,57.85,45.17,94.77,0,67.29-54.75,122.04-122.04,122.04-22.27,0-44.07-6.06-63.04-17.53l-.92,1.51c19.25,11.64,41.36,17.79,63.96,17.79,68.27,0,123.81-55.54,123.81-123.81,0-37.45-16.7-72.49-45.83-96.14Z"/><path class="cls-1" d="M96.12,168.28v-26.84h-8.66v3.01c-2.47-3.37-6.14-3.91-8.42-3.91-3.73,0-6.98,1.32-9.33,3.67-2.47,2.47-4.15,6.32-4.15,10.83,0,3.55,1.08,7.04,3.91,10.05,2.95,3.13,6.2,4.09,10.05,4.09,2.23,0,5.6-.54,7.94-4.15v3.25h8.66Zm-10.23-8.42c-1.14,1.14-2.77,1.86-4.51,1.86-2.05,0-3.91-.84-5.11-2.11-.78-.84-1.81-2.41-1.81-4.81s1.08-3.97,1.99-4.87c1.14-1.14,2.89-1.93,4.75-1.93,1.56,0,3.49,.6,4.81,1.86,1.26,1.2,1.99,3.01,1.99,4.93,0,2.29-.96,3.97-2.11,5.05Z"/><path class="cls-1" d="M130.84,168.28v-16.97c0-2.17-.18-5.35-2.71-7.88-2.29-2.29-5.35-2.71-7.7-2.71-2.53,0-5.66,.54-8.3,3.91v-3.19h-8.66v26.84h8.66v-13.78c0-1.75,.24-3.67,1.68-5.11,.66-.72,1.81-1.44,3.61-1.44,1.56,0,2.65,.54,3.31,1.2,1.38,1.38,1.44,3.61,1.44,5.35v13.78h8.66Z"/><polygon class="cls-1" points="136.44 141.45 136.44 148.67 148.29 148.67 134.33 168.28 161.71 168.28 161.71 161.06 149.01 161.06 162.91 141.45 136.44 141.45"/><path class="cls-1" d="M193.9,155.47c0-3.31-.6-7.52-3.79-10.89-3.31-3.49-7.64-4.03-10.65-4.03s-7.04,.6-10.29,3.85c-2.71,2.77-4.09,6.74-4.09,10.59,0,4.45,1.69,8,4.03,10.35,3.13,3.13,6.68,3.85,10.71,3.85,3.01,0,5.9-.42,8.48-1.99,1.56-.96,3.97-2.95,5.17-6.74l-8.18-.84c-.72,1.5-1.75,2.17-1.87,2.23-.9,.54-2.23,.78-3.49,.78s-3.13-.24-4.45-1.69c-1.08-1.2-1.62-3.13-1.62-4.57h20.04v-.9Zm-19.74-4.27c.24-1.2,.84-2.17,1.5-2.89,.84-.84,2.17-1.74,4.39-1.74,1.75,0,3.13,.6,4.09,1.5,1.26,1.2,1.69,2.89,1.75,3.13h-11.73Z"/><circle class="cls-1" cx="203.59" cy="130.01" r="5.05"/><rect class="cls-1" x="199.26" y="141.45" width="8.66" height="26.84"/><circle class="cls-1" cx="235.85" cy="164.19" r="5.05"/><polygon class="cls-1" points="216.11 132.78 216.11 141.45 213.1 141.45 213.1 148.43 216.11 148.43 216.11 168.28 224.78 168.28 224.78 148.43 230.13 148.43 230.13 141.45 224.78 141.45 224.78 132.78 216.11 132.78"/></svg>
+    </div>
+    <div class="footer-copy">
+      <div class="footer-socials">
+        <a href="https://open.spotify.com/playlist/2qutKgi03L5rDq4FLyBhnq" target="_blank" rel="noopener" aria-label="Lametta Weihnachtsplaylist auf Spotify öffnen"><svg class="social-icon social-icon--spotify" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.58 14.42a.75.75 0 0 1-1.03.25c-2.83-1.73-6.39-2.12-10.58-1.16a.75.75 0 1 1-.34-1.46c4.58-1.05 8.52-.6 11.7 1.34.35.22.46.68.25 1.03Zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.24-1.99-8.18-2.56-12.02-1.4a.94.94 0 1 1-.54-1.8c4.39-1.33 9.84-.69 13.54 1.58.44.27.58.85.31 1.31Zm.13-3.4C14.3 7.45 7.9 7.24 4.2 8.36A1.12 1.12 0 1 1 3.55 6.2c4.25-1.29 11.32-1.04 15.78 1.61a1.12 1.12 0 0 1-1.15 1.93Z"/></svg><span><strong>Christmas Playlist</strong><small>Weihnachtsmusik auf Spotify ↗</small></span></a>
+        <a href="https://www.instagram.com/lametta_xmas/" target="_blank" rel="noopener" aria-label="Lametta auf Instagram öffnen"><svg class="social-icon social-icon--instagram" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM17 5.5A1.25 1.25 0 1 1 17 8a1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg><span><strong>Instagram</strong><small>@lametta_xmas ↗</small></span></a>
+      </div>
+      <p>© anzeit publishing · Lametta Christmas Gift Guide</p>
+      <p>KI-Transparenz: Diese Website wurde unter redaktioneller Verantwortung von anzeit publishing mit Unterstützung KI-gestützter Werkzeuge konzipiert und umgesetzt. Inhalte, Angaben und Gestaltung wurden redaktionell geprüft.</p>
+    </div>`;
+}
+
+function setText(selector, value) {
+  const element = document.querySelector(selector);
+  if (element) element.textContent = value;
+}
+
+function setHTML(selector, value) {
+  const element = document.querySelector(selector);
+  if (element) element.innerHTML = value;
+}
+
+function renderLanguageSwitcher() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  let switcher = nav.querySelector('.language-switcher');
+  if (!switcher) {
+    switcher = document.createElement('div');
+    switcher.className = 'language-switcher';
+    switcher.setAttribute('aria-label', 'Language / Sprache');
+    switcher.innerHTML = '<button type="button" data-language="de">DE</button><span aria-hidden="true">|</span><button type="button" data-language="en">EN</button>';
+    nav.appendChild(switcher);
+    switcher.querySelectorAll('button').forEach((button) => {
+      button.addEventListener('click', () => {
+        currentLanguage = button.dataset.language;
+        try { localStorage.setItem('lametta-language', currentLanguage); } catch {}
+        applyLanguage(currentLanguage);
+      });
+    });
+  }
+  switcher.querySelectorAll('button').forEach((button) => {
+    const active = button.dataset.language === currentLanguage;
+    button.classList.toggle('is-active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+}
+
+function formatPrizeValue(value, language) {
+  if (language === 'de') return value;
+  const each = /^je\s+/i.test(value);
+  const normalized = value.replace(/^je\s+/i, '').replace(/([\d.]+)\s*€/, (_, amount) => `€${amount.replace('.', ',')}`);
+  return `${normalized}${each ? ' each' : ''}`;
+}
+
+function applyLanguage(language) {
+  currentLanguage = language === 'en' ? 'en' : 'de';
+  const t = languageCopy[currentLanguage];
+  document.documentElement.lang = currentLanguage;
+  document.title = t.title;
+  document.querySelector('meta[name="description"]')?.setAttribute('content', t.description);
+  document.querySelectorAll('nav .links a').forEach((link, index) => { if (t.nav[index]) link.textContent = t.nav[index]; });
+  setText('.herotxt .eyebrow', t.heroEyebrow); setHTML('.herotxt h1', t.heroTitle); setText('.herotxt p', t.heroCopy); setText('.herotxt .cta', t.heroCta); setText('.cover-claim', t.coverClaim); setText('.hero-epaper-cta', t.epaperOpen);
+  document.querySelector('.hero-cover-link')?.setAttribute('aria-label', t.epaperAria);
+  const quickFacts = document.querySelectorAll('.hero-quick-facts > div');
+  if (quickFacts[0]) { quickFacts[0].querySelector('strong').textContent = t.circulation; quickFacts[0].querySelector('span').textContent = t.circulationLabel; }
+  if (quickFacts[1]) { quickFacts[1].querySelector('strong').textContent = t.reach; quickFacts[1].querySelector('span').textContent = t.reachLabel; }
+  document.querySelector('.hero-quick-facts')?.setAttribute('aria-label', t.factsAria);
+  setText('.brandticker .label', t.brandsLabel); document.querySelector('.brandticker')?.setAttribute('aria-label', t.brandsAria);
+  setHTML('.intro h2', t.introTitle); setText('.intro .eyebrow', t.introEyebrow); setText('.intro p', t.introCopy);
+  setText('.placement-intro .eyebrow', t.placementsEyebrow); setHTML('.placement-intro h2', t.placementsTitle); setText('.placement-intro p:not(.placement-note)', t.placementsCopy); setText('.placement-note', t.placementsNote);
+  document.querySelectorAll('.spread-pair figcaption').forEach((caption, index) => { if (t.placementCaptions[index]) caption.textContent = t.placementCaptions[index]; });
+  setText('#fakten > .eyebrow', t.factsEyebrow); setHTML('#fakten > h2', t.factsTitle);
+  document.querySelectorAll('#fakten .fact').forEach((fact, index) => { if (t.factValues[index]) fact.querySelector('strong').textContent = t.factValues[index]; if (t.factLabels[index]) fact.querySelector('span').textContent = t.factLabels[index]; });
+  setText('#fakten .note', t.factNote);
+  const cooperation = document.querySelector('#fakten + section');
+  if (cooperation) {
+    cooperation.querySelector(':scope > .eyebrow').textContent = t.cooperationEyebrow; cooperation.querySelector(':scope > h2').innerHTML = t.cooperationTitle;
+    cooperation.querySelectorAll('.formats article').forEach((article, index) => { if (t.cooperationLabels[index]) article.querySelector('.eyebrow').textContent = t.cooperationLabels[index]; if (t.cooperationTitles[index]) article.querySelector('h3').textContent = t.cooperationTitles[index]; if (t.cooperationCopies[index]) article.querySelector('p').textContent = t.cooperationCopies[index]; });
+    cooperation.querySelector('.cta').textContent = t.cooperationCta;
+  }
+  setText('#gewinnspiel .eyebrow', t.giveawayEyebrow); setText('#gewinnspiel h2', t.giveawayTitle);
+  const giveawayStats = document.querySelectorAll('#gewinnspiel .giveaway-stat');
+  if (giveawayStats[0]) giveawayStats[0].querySelector('span').textContent = t.wins;
+  if (giveawayStats[1]) { giveawayStats[1].querySelector('strong').textContent = t.giveawayValue; giveawayStats[1].querySelector('span').textContent = t.totalValue; }
+  setText('#gewinnspiel .giveaway-lead', t.giveawayCopy); setText('#gewinnspiel .giveaway-bottom .cta', t.giveawayCta);
+  document.querySelectorAll('#gewinnspiel .prize-card > span').forEach((element, index) => { const value = prizeHighlights[index % prizeHighlights.length][2]; element.textContent = `${t.valueLabel}: ${formatPrizeValue(value, currentLanguage)}`; });
+  setText('#epaper .eyebrow', t.epaperEyebrow); setHTML('#epaper h2', t.epaperTitle); setText('#epaper .epaper-copy > p:not(.epaper-note)', t.epaperCopy); setText('#epaper .cta', t.epaperButton); setText('#epaper .epaper-note', t.epaperNote);
+  setText('#archiv > .eyebrow', t.archiveEyebrow); setText('#archiv > h2', t.archiveTitle); setText('#archiv > p', t.archiveCopy);
+  document.querySelectorAll('#archiv .archive-link').forEach((button) => { button.textContent = t.preview; }); setText('#archiv .archive-status', t.fullEpaper);
+  document.querySelectorAll('#archiv .archive-cover').forEach((button) => { button.setAttribute('aria-label', `${t.previewAria} ${button.dataset.previewYear}`); }); document.querySelector('#archiv .preview-reader-close')?.setAttribute('aria-label', t.close);
+  setText('#kontakt .eyebrow', t.contactEyebrow); setHTML('#kontakt h2', t.contactTitle); setText('#kontakt .contact-copy > p', t.contactCopy);
+  const contactActions = document.querySelectorAll('#kontakt .contact-actions a');
+  if (contactActions[0]) { contactActions[0].textContent = t.contactTalk; contactActions[0].href = currentLanguage === 'en' ? 'mailto:hallo@lametta-mag.de?subject=Conversation%20about%20Lametta%202026' : 'mailto:hallo@lametta-mag.de?subject=Gespr%C3%A4ch%20zu%20Lametta%202026'; }
+  if (contactActions[1]) { contactActions[1].textContent = t.contactMedia; contactActions[1].href = currentLanguage === 'en' ? 'mailto:hallo@lametta-mag.de?subject=Lametta%202026%20media%20kit' : 'mailto:hallo@lametta-mag.de?subject=Mediadaten%20Lametta%202026'; }
+  setText('#kontakt figcaption', t.contactCaption); setText('.footer-socials a:first-child small', t.spotify);
+  const footerParagraphs = document.querySelectorAll('.footer-copy > p'); if (footerParagraphs[1]) footerParagraphs[1].textContent = t.transparency;
+  renderLanguageSwitcher();
+}
+
+function renderSite() {
+  renderArchive(); renderBrandReferences(); renderPlacements(); renderGiveaway(); renderEpaper(); renderContact(); cleanPrototypeNotes(); renderFooter(); upgradeHeroCover(); upgradeHeroCopy(); renderLanguageSwitcher(); applyLanguage(currentLanguage);
+}
+
+renderSite();
